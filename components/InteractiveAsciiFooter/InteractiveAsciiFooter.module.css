@@ -1,0 +1,79 @@
+.footer {
+  position: relative;
+  width: 100vw;
+  height: clamp(16rem, 30vw, 26rem);
+  overflow: hidden;
+  color: #000;
+  background: transparent;
+  border-top: 1px solid var(--border);
+  contain: layout paint;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.cursorLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0.4rem 0.65rem;
+  color: #fff;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  opacity: 0;
+  box-shadow: 0 0.35rem 1rem rgb(0 0 0 / 28%);
+  transition: opacity 240ms ease;
+  will-change: transform;
+}
+
+:global(.dark) .footer {
+  color: #fff;
+}
+
+:global(.dark) .cursorLabel {
+  color: #000;
+  background: #fff;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 40rem) {
+  .footer {
+    height: clamp(10rem, 42vw, 13rem);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .footer,
+  .canvas {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursorLabel {
+    transition: none;
+  }
+}

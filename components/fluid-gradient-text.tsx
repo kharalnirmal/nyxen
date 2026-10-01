@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { DepartureMono } from "@/app/font";
 
 export type FluidGradientTextProps = {
   /** Text content rendered inside the SVG. */
@@ -64,7 +65,7 @@ export function FluidGradientText({
           strokeWidth="2"
           fill="url(#fluid_gradient_text_linear)"
           style={{
-            fontFamily: "MyFont,Helvetica",
+            fontFamily: `${DepartureMono.style.fontFamily}, Helvetica`,
             fontSize: svgViewBoxHeight,
             fontWeight: "bold",
             letterSpacing: "-0.08em",

@@ -1,0 +1,198 @@
+.workSection h2 {
+  margin-top: 100px;
+  padding-left: 80px;
+  font-size: 70px;
+  font-weight: 500;
+  font-family: var(--font-clash);
+}
+.workSection h2 > span {
+  color: var(--accent);
+}
+.workSection {
+  transition: 0s;
+  height: 100vh;
+  box-sizing: border-box;
+  will-change: transform;
+  overflow: hidden;
+}
+.workContainer {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-content: stretch;
+}
+.workFlex {
+  width: max-content;
+  min-width: 100%;
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
+  padding-right: 120px;
+  position: relative;
+  border-block: 1px solid #363636;
+}
+.workBox {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  box-sizing: border-box;
+  border-right: 1px solid #363636;
+  flex-shrink: 0;
+  gap: 50px;
+  justify-content: start;
+}
+.workFlex .workBox:nth-child(even) {
+  flex-direction: column-reverse;
+}
+.workTitle {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.workTitle > div {
+  text-align: right;
+}
+.workTitle h3 {
+  font-size: 50px;
+  line-height: 50px;
+  margin: 0;
+  font-family: var(--font-clash);
+  font-weight: 600;
+}
+
+.workInfo h4 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  font-family: var(--font-clash);
+}
+.workInfo p {
+  font-weight: 200;
+  color: #adacac;
+  margin: 0;
+  margin-top: 3px;
+}
+.workInfo > p {
+  width: 90%;
+}
+.workImage {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.workImageIn {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.workLink {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: var(--background);
+  width: 50px;
+  border-radius: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  box-shadow:
+    0px 0px 10px 0px rgba(255, 255, 255, 0.5),
+    inset 0px 0px 10px 0px #393939;
+  transition: 0.3s;
+  opacity: 0;
+  z-index: 2;
+}
+.workImage a:hover {
+  color: inherit;
+}
+.workImage a:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .workImage a:hover .workLink {
+    opacity: 1;
+  }
+}
+.workImage video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  object-fit: cover;
+}
+.workImage img {
+  object-fit: cover;
+}
+@media only screen and (max-height: 900px) {
+  .workBox {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .workSection h2 {
+    font-size: 60px;
+    margin-bottom: 30px;
+    margin-top: 70px;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .workTitle h3 {
+    font-size: 35px;
+  }
+  .workInfo p {
+    font-size: 13px;
+  }
+  .workInfo h4 {
+    font-size: 15px;
+  }
+  .workBox {
+    width: 450px;
+    padding: 50px;
+  }
+  .workFlex {
+    padding-right: 75px;
+  }
+  .workSection h2 {
+    font-size: 50px;
+    padding-left: 50px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .workSection h2 {
+    padding-left: 30px;
+  }
+  .workBox {
+    width: 350px;
+    padding: 30px;
+  }
+  .workFlex {
+    padding-right: 45px;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .workSection h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .workBox {
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 1025px) {
+  .workContainer {
+    align-content: normal;
+  }
+  .workFlex {
+    height: auto;
+  }
+}

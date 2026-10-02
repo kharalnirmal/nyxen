@@ -55,18 +55,6 @@
   will-change: transform, opacity;
 }
 
-.originalCat {
-  display: none;
-}
-
-:global(.dark) .whiteCat {
-  display: none;
-}
-
-:global(.dark) .originalCat {
-  display: block;
-}
-
 .tagline {
   margin-top: clamp(-1rem, -1vw, -0.25rem);
   color: var(--preloader-fg);

@@ -79,12 +79,16 @@ export default function Preloader() {
           duration: reduceMotion ? 0.15 : 0.4,
           ease: "power2.in",
         })
-        .to(overlayRef.current, {
-          yPercent: -100,
-          y: -96,
-          duration: reduceMotion ? 0.2 : 1.35,
-          ease: reduceMotion ? "power1.inOut" : "power3.inOut",
-        }, "-=0.1");
+        .to(
+          overlayRef.current,
+          {
+            yPercent: -100,
+            y: -96,
+            duration: reduceMotion ? 0.2 : 1.35,
+            ease: reduceMotion ? "power1.inOut" : "power3.inOut",
+          },
+          "-=0.1",
+        );
 
       return () => {
         document.body.style.overflow = previousOverflow;
@@ -106,18 +110,7 @@ export default function Preloader() {
     >
       <div ref={contentRef} className={styles.content}>
         <div ref={lottieRef} className={styles.lottie} aria-hidden="true">
-          <Lottie
-            className={styles.whiteCat}
-            src="/lottie/Cat%20typing%20white.json"
-            loop
-            autoplay
-          />
-          <Lottie
-            className={styles.originalCat}
-            src="/lottie/Cat%20typing.json"
-            loop
-            autoplay
-          />
+          <Lottie src="/lottie/Money.json" loop autoplay />
         </div>
 
         <p ref={textRef} className={`${styles.tagline} ${caveat.className}`}>
@@ -125,7 +118,7 @@ export default function Preloader() {
           {showStrike ? (
             <Highlighter
               action="strike-through"
-              color="#e5484d"
+              color="#8200db"
               strokeWidth={5}
               animationDuration={700}
               iterations={3}

@@ -1,0 +1,97 @@
+.overlay {
+  --preloader-bg: #111;
+  --preloader-fg: #f5f3ee;
+  --preloader-lottie-shadow: rgb(0 0 0 / 38%);
+  --preloader-text-shadow: rgb(0 0 0 / 35%);
+
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: visible;
+  color: var(--preloader-fg);
+  background: var(--preloader-bg);
+  will-change: transform;
+}
+
+:global(.dark) .overlay {
+  --preloader-bg: #f5f3ee;
+  --preloader-fg: #111;
+  --preloader-lottie-shadow: rgb(17 17 17 / 14%);
+  --preloader-text-shadow: rgb(17 17 17 / 12%);
+}
+
+.overlay::after {
+  position: absolute;
+  right: 0;
+  bottom: -5.9rem;
+  left: 0;
+  height: 6rem;
+  pointer-events: none;
+  content: "";
+  background: var(--preloader-bg);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 96' preserveAspectRatio='none'%3E%3Cpath fill='%23000' d='M0 0h1440v28c-120 44-240-20-360 10s-240 38-360-4S480 6 360 44 120 70 0 34V0Z'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(94vw, 46rem);
+  padding: 2rem;
+  will-change: transform, opacity;
+}
+
+.lottie {
+  width: clamp(16rem, 34vw, 24rem);
+  aspect-ratio: 1;
+  opacity: 0;
+  filter: drop-shadow(0 1.5rem 2.5rem var(--preloader-lottie-shadow));
+  will-change: transform, opacity;
+}
+
+.originalCat {
+  display: none;
+}
+
+:global(.dark) .whiteCat {
+  display: none;
+}
+
+:global(.dark) .originalCat {
+  display: block;
+}
+
+.tagline {
+  margin-top: clamp(-1rem, -1vw, -0.25rem);
+  color: var(--preloader-fg);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-align: center;
+  text-wrap: balance;
+  opacity: 0;
+  text-shadow: 0 0.15rem 1rem var(--preloader-text-shadow);
+  will-change: transform, opacity;
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1.25rem;
+  }
+
+  .lottie {
+    width: min(18rem, 84vw);
+  }
+
+  .tagline {
+    font-size: clamp(3rem, 14vw, 4.25rem);
+  }
+
+}

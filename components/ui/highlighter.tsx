@@ -23,6 +23,7 @@ interface HighlighterProps {
   animationDuration?: number;
   iterations?: number;
   padding?: number;
+  offsetY?: number;
   multiline?: boolean;
   isView?: boolean;
 }
@@ -35,6 +36,7 @@ export function Highlighter({
   animationDuration = 600,
   iterations = 2,
   padding = 2,
+  offsetY = 0,
   multiline = true,
   isView = false,
 }: HighlighterProps) {
@@ -68,9 +70,22 @@ export function Highlighter({
       annotation = currentAnnotation;
       currentAnnotation.show();
 
+      const applyOffset = () => {
+        const annotationSvg = element.nextElementSibling;
+
+        if (offsetY && annotationSvg?.matches("svg.rough-annotation")) {
+          annotationSvg.querySelectorAll("path").forEach((path) => {
+            path.style.transform = `translateY(${offsetY}px)`;
+          });
+        }
+      };
+
+      applyOffset();
+
       resizeObserver = new ResizeObserver(() => {
         currentAnnotation.hide();
         currentAnnotation.show();
+        applyOffset();
       });
 
       resizeObserver.observe(element);
@@ -91,6 +106,7 @@ export function Highlighter({
     animationDuration,
     iterations,
     padding,
+    offsetY,
     multiline,
   ]);
 

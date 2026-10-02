@@ -1,5 +1,4 @@
-import { FluidGradientText } from "@/components/fluid-gradient-text";
-import { CinematicFooter } from "@/components/ui/motion-footer";
+import { CinematicFooter } from "@/components/footer/motion-footer";
 
 import Preloader from "@/components/preloader/Preloader";
 import Work from "@/components/work/Work";

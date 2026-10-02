@@ -112,13 +112,19 @@ type MagneticButtonProps = React.HTMLAttributes<HTMLElement> & {
 };
 
 const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
-  ({ className, children, as: Component = "button", ...props }, forwardedRef) => {
+  (
+    { className, children, as: Component = "button", ...props },
+    forwardedRef,
+  ) => {
     const localRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
       const element = localRef.current;
 
-      if (!element || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (
+        !element ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
         return;
       }
 
@@ -269,58 +275,64 @@ export function CinematicFooter() {
       <div
         id="contact"
         ref={wrapperRef}
-        className="relative h-[100svh] w-full"
+        className="relative w-full h-[100svh]"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
         <footer
           aria-label="Nirmal Kharal portfolio footer"
-          className="cinematic-footer-wrapper fixed bottom-0 left-0 flex h-[100svh] w-full flex-col justify-between overflow-hidden bg-background text-foreground"
+          className="bottom-0 left-0 fixed flex flex-col justify-between bg-background w-full h-[100svh] overflow-hidden text-foreground cinematic-footer-wrapper"
         >
-          <div className="footer-aurora pointer-events-none absolute left-1/2 top-1/2 z-0 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px]" />
-          <div className="footer-bg-grid pointer-events-none absolute inset-0 z-0" />
+          <div className="top-1/2 left-1/2 z-0 absolute blur-[80px] rounded-[50%] w-[80vw] h-[60vh] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe pointer-events-none footer-aurora" />
+          <div className="z-0 absolute inset-0 footer-bg-grid pointer-events-none" />
 
           <div
             ref={giantTextRef}
-            className="footer-giant-bg-text pointer-events-none absolute -bottom-[2vh] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap"
+            className="-bottom-[2vh] left-1/2 z-0 absolute footer-giant-bg-text whitespace-nowrap -translate-x-1/2 pointer-events-none select-none"
             aria-hidden="true"
           >
             NIRMAL
           </div>
 
-          <div className="absolute left-0 top-10 z-10 w-full -rotate-2 scale-110 overflow-hidden border-y border-border/50 bg-background/60 py-3 shadow-2xl backdrop-blur-md md:top-12 md:py-4">
-            <div className="flex w-max animate-footer-scroll-marquee text-[0.65rem] font-bold uppercase tracking-[0.3em] text-muted-foreground md:text-sm">
+          <div className="top-10 md:top-12 left-0 z-10 absolute bg-background/60 shadow-2xl backdrop-blur-md py-3 md:py-4 border-border/50 border-y w-full overflow-hidden -rotate-2 scale-110">
+            <div className="flex w-max font-bold text-[0.65rem] text-muted-foreground md:text-sm uppercase tracking-[0.3em] animate-footer-scroll-marquee">
               <MarqueeItem />
               <MarqueeItem />
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto mt-20 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground md:text-sm">
+          <div className="z-10 relative flex flex-col flex-1 justify-center items-center mx-auto mt-20 px-6 w-full max-w-5xl">
+            <p className="mb-4 font-semibold text-muted-foreground text-xs md:text-sm uppercase tracking-[0.35em]">
               Have an idea in mind?
             </p>
             <h2
               ref={headingRef}
-              className="footer-text-glow mb-8 max-w-4xl text-center text-4xl font-black tracking-tighter sm:text-6xl md:mb-12 md:text-8xl"
+              className="mb-8 md:mb-12 max-w-4xl font-black footer-text-glow text-4xl sm:text-6xl md:text-8xl text-center tracking-tighter"
             >
               Let&apos;s make it memorable.
             </h2>
 
-            <div ref={linksRef} className="flex w-full flex-col items-center gap-5 md:gap-6">
-              <div className="flex w-full flex-wrap justify-center gap-3 md:gap-4">
+            <div
+              ref={linksRef}
+              className="flex flex-col items-center gap-5 md:gap-6 w-full"
+            >
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 w-full">
                 <MagneticButton
                   as="a"
                   href="#work"
-                  className="footer-glass-pill group flex items-center gap-3 rounded-full px-8 py-4 text-sm font-bold text-foreground md:px-10 md:py-5 md:text-base"
+                  className="group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-foreground text-sm md:text-base footer-glass-pill"
                 >
                   Explore my work
-                  <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+                  <span
+                    className="transition-transform group-hover:translate-x-1 duration-300"
+                    aria-hidden="true"
+                  >
                     ↗
                   </span>
                 </MagneticButton>
                 <MagneticButton
                   as="a"
                   href="https://github.com/kharalnirmal"
-                  className="footer-glass-pill rounded-full px-8 py-4 text-sm font-bold text-foreground md:px-10 md:py-5 md:text-base"
+                  className="px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-foreground text-sm md:text-base footer-glass-pill"
                 >
                   Contact me
                 </MagneticButton>
@@ -328,8 +340,8 @@ export function CinematicFooter() {
             </div>
           </div>
 
-          <div className="relative z-20 flex w-full flex-col items-center justify-between gap-4 px-6 pb-6 md:flex-row md:gap-6 md:px-12 md:pb-8">
-            <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground md:text-xs">
+          <div className="z-20 relative flex md:flex-row flex-col justify-between items-center gap-4 md:gap-6 px-6 md:px-12 pb-6 md:pb-8 w-full">
+            <div className="font-semibold text-[10px] text-muted-foreground md:text-xs uppercase tracking-widest">
               © 2026 Nirmal Kharal. All rights reserved.
             </div>
 
@@ -338,16 +350,21 @@ export function CinematicFooter() {
               type="button"
               onClick={scrollToTop}
               aria-label="Back to top"
-              className="footer-glass-pill group hidden size-12 items-center justify-center rounded-full text-muted-foreground hover:text-foreground md:flex"
+              className="group hidden md:flex justify-center items-center rounded-full size-12 text-muted-foreground hover:text-foreground footer-glass-pill"
             >
               <svg
-                className="size-5 transition-transform duration-300 group-hover:-translate-y-1.5"
+                className="size-5 transition-transform group-hover:-translate-y-1.5 duration-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0 7 7M12 3v18" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 10l7-7m0 0 7 7M12 3v18"
+                />
               </svg>
             </MagneticButton>
           </div>

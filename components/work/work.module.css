@@ -17,6 +17,7 @@
   transition: 0s;
   height: 100svh;
   box-sizing: border-box;
+  border-bottom: 1px solid var(--work-border);
   will-change: transform;
   overflow: hidden;
 }
@@ -36,7 +37,7 @@
   height: auto;
   box-sizing: border-box;
   position: relative;
-  border-block: 1px solid var(--work-border);
+  border-top: 1px solid var(--work-border);
 }
 .workBox {
   padding: 80px;
@@ -48,6 +49,7 @@
   flex-shrink: 0;
   gap: 50px;
   justify-content: start;
+  box-shadow: inset 0 -1px 0 var(--work-border);
 }
 .workFlex .workBox:not(.connectBox):nth-child(even) {
   flex-direction: column-reverse;
@@ -164,20 +166,6 @@
 }
 .workBox.connectBox {
   padding-right: 24px;
-}
-.connectBox::before {
-  content: "";
-  position: absolute;
-  z-index: -2;
-  top: 50%;
-  right: -95px;
-  width: 240px;
-  aspect-ratio: 1;
-  border: 1px dashed
-    color-mix(in srgb, var(--connect-foreground) 35%, transparent);
-  border-radius: 50%;
-  transform: translateY(-50%);
-  animation: connectOrbit 24s linear infinite;
 }
 .connectBox::after {
   content: "";
@@ -296,11 +284,6 @@
     transform: translate(-50%, -50%);
   }
 }
-@keyframes connectOrbit {
-  to {
-    transform: translateY(-50%) rotate(360deg);
-  }
-}
 @keyframes connectGlow {
   to {
     transform: translate(-40px, -25px) scale(1.12);
@@ -394,7 +377,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .connectBox::before,
   .connectBox::after {
     animation: none;
   }

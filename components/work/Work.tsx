@@ -69,13 +69,16 @@ const Work = () => {
           (workFlexRef.current?.scrollWidth ?? 0) - window.innerWidth,
         );
 
+      const getScrollDuration = () =>
+        getScrollDistance() * (window.innerWidth <= 900 ? 0.7 : 1);
+
       gsap.to(workFlexRef.current, {
         x: () => -getScrollDistance(),
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () => `+=${getScrollDistance()}`,
+          end: () => `+=${getScrollDuration()}`,
           scrub: 1,
           pin: true,
           invalidateOnRefresh: true,

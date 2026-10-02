@@ -15,7 +15,7 @@
 }
 .workSection {
   transition: 0s;
-  height: 100vh;
+  height: 100svh;
   box-sizing: border-box;
   will-change: transform;
   overflow: hidden;
@@ -349,13 +349,20 @@
   }
 }
 @media only screen and (max-width: 900px) {
+  .workSection {
+    height: clamp(520px, 72svh, 640px);
+  }
   .workSection h2 {
     padding-inline: 20px;
     font-size: clamp(42px, 10vw, 56px);
+    margin-top: clamp(32px, 6svh, 48px);
+    margin-bottom: 18px;
   }
   .workBox {
-    width: 350px;
-    padding: 30px;
+    width: min(86vw, 340px);
+    padding: 22px;
+    gap: 20px;
+    justify-content: center;
   }
   .workBox.connectBox {
     padding-right: 18px;
@@ -368,7 +375,7 @@
   }
 }
 
-@media only screen and (max-height: 650px) {
+@media only screen and (max-height: 650px) and (min-width: 901px) {
   .workSection h2 {
     font-size: clamp(38px, 8vh, 48px);
     margin-bottom: 20px;

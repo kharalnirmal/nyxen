@@ -24,6 +24,7 @@ export default function Home() {
           svgViewBoxWidth={2000}
         />
       </div>
+      <InteractiveAsciiFooter />
     </main>
   );
 }

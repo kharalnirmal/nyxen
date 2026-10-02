@@ -6,7 +6,9 @@ import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { clashDisplay } from "@/app/font";
+import { clashDisplay, Vibes } from "@/app/font";
+import { MdArrowOutward } from "react-icons/md";
+import { Highlighter } from "../ui/highlighter";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -90,9 +92,21 @@ const Work = () => {
       ref={sectionRef}
     >
       <div className={`${styles.workContainer} `}>
-        <h2>
-          My <span>Work</span>
+        <h2 className="text-center">
+          My{" "}
+          <span className={Vibes.className}>
+            {" "}
+            <Highlighter
+              isView
+              animationDuration={800}
+              action="underline"
+              padding={-10}
+            >
+              Work
+            </Highlighter>
+          </span>
         </h2>
+
         <div className={styles.workFlex} ref={workFlexRef}>
           {projects.map((project, index) => (
             <article className={styles.workBox} key={project.name}>
@@ -116,6 +130,24 @@ const Work = () => {
               />
             </article>
           ))}
+          <article className={`${styles.workBox} ${styles.connectBox}`}>
+            <h3 className={styles.connectHeading}>
+              <span>Let&apos;s</span>
+              <span className={`${styles.connectScript} ${Vibes.className}`}>
+                connect !
+              </span>
+            </h3>
+            <p className={styles.connectCopy}>
+              Tell me what you are building, and let&apos;s make it memorable.
+            </p>
+            <a className={styles.connectButton} href="#contact">
+              Get in touch
+              <span className={styles.connectArrow} aria-hidden="true">
+                <MdArrowOutward />
+                <MdArrowOutward />
+              </span>
+            </a>
+          </article>
         </div>
       </div>
     </section>

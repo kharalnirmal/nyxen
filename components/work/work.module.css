@@ -1,12 +1,17 @@
 .workSection h2 {
-  margin-top: 100px;
-  padding-left: 80px;
-  font-size: 70px;
+  margin-top: clamp(70px, 8vh, 120px);
+  padding-inline: clamp(24px, 5vw, 80px);
+  font-size: clamp(64px, 6vw, 116px);
   font-weight: 500;
+  line-height: 1;
   font-family: var(--font-clash);
 }
 .workSection h2 > span {
-  color: var(--accent);
+  color: var(--purple-text-color);
+  background-image: var(--purple-text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .workSection {
   transition: 0s;
@@ -26,11 +31,12 @@
   width: max-content;
   min-width: 100%;
   display: flex;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
+  height: auto;
   box-sizing: border-box;
-  padding-right: 120px;
   position: relative;
-  border-block: 1px solid #363636;
+  border-block: 1px solid var(--work-border);
 }
 .workBox {
   padding: 80px;
@@ -38,12 +44,12 @@
   flex-direction: column;
   width: 600px;
   box-sizing: border-box;
-  border-right: 1px solid #363636;
+  border-right: 1px solid var(--work-border);
   flex-shrink: 0;
   gap: 50px;
   justify-content: start;
 }
-.workFlex .workBox:nth-child(even) {
+.workFlex .workBox:not(.connectBox):nth-child(even) {
   flex-direction: column-reverse;
 }
 .workTitle {
@@ -90,23 +96,38 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
+.workLink svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.workLink svg:nth-child(2) {
+  transform: translate(-225%, 125%);
+}
 .workLink {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background-color: var(--background);
+  background-color: var(--foreground);
+  color: var(--background);
   width: 50px;
   border-radius: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   font-size: 25px;
   box-shadow:
     0px 0px 10px 0px rgba(255, 255, 255, 0.5),
     inset 0px 0px 10px 0px #393939;
-  transition: 0.3s;
-  opacity: 0;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    transform 0.3s;
+  opacity: 1;
   z-index: 2;
 }
 .workImage a:hover {
@@ -118,7 +139,171 @@
 }
 @media (hover: hover) {
   .workImage a:hover .workLink {
-    opacity: 1;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  .workImage a:hover .workLink svg:first-child {
+    transform: translate(125%, -225%);
+  }
+  .workImage a:hover .workLink svg:nth-child(2) {
+    transform: translate(-50%, -50%);
+  }
+}
+.connectBox {
+  --connect-background: var(--background);
+  --connect-foreground: var(--foreground);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 50px;
+  background-color: var(--connect-background);
+  color: var(--connect-foreground);
+}
+.workBox.connectBox {
+  padding-right: 24px;
+}
+.connectBox::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  top: 50%;
+  right: -95px;
+  width: 240px;
+  aspect-ratio: 1;
+  border: 1px dashed
+    color-mix(in srgb, var(--connect-foreground) 35%, transparent);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  animation: connectOrbit 24s linear infinite;
+}
+.connectBox::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -65px;
+  bottom: -80px;
+  width: 230px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--connect-foreground) 18%, transparent),
+    transparent 68%
+  );
+  animation: connectGlow 5s ease-in-out infinite alternate;
+}
+.connectBox > * {
+  position: relative;
+  z-index: 1;
+}
+.connectLabel {
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.connectHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.14em;
+  max-width: 460px;
+  margin: 0;
+  font-family: var(--font-clash);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.connectScript {
+  display: inline-block;
+  padding: 0.2em 0.06em 0.08em;
+  margin-block: -0.2em -0.08em;
+  color: var(--purple-text-color);
+  background-image: var(--purple-text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.35em;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+.connectCopy {
+  max-width: 390px;
+  margin: 18px 0 24px;
+  color: color-mix(in srgb, var(--connect-foreground) 70%, transparent);
+  font-size: 17px;
+  line-height: 1.5;
+  text-align: center;
+}
+.connectButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 9px 10px 9px 24px;
+  background-color: var(--purple-text-color);
+  color: var(--background);
+  font-family: var(--font-clash);
+  font-weight: 500;
+  transition:
+    filter 0.3s,
+    transform 0.3s;
+}
+.connectArrow {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  overflow: hidden;
+  contain: paint;
+  border-radius: 50%;
+  background-color: var(--background);
+  color: var(--purple-text-color);
+  font-size: 22px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+.connectArrow svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.connectArrow svg:nth-child(2) {
+  transform: translate(-190%, 90%);
+}
+.connectButton:focus-visible {
+  outline: 2px solid var(--purple-text-color);
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .connectButton:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+  .connectButton:hover .connectArrow svg:first-child {
+    transform: translate(90%, -190%);
+  }
+  .connectButton:hover .connectArrow svg:nth-child(2) {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes connectOrbit {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+@keyframes connectGlow {
+  to {
+    transform: translate(-40px, -25px) scale(1.12);
   }
 }
 .workImage video {
@@ -139,7 +324,7 @@
     padding-bottom: 40px;
   }
   .workSection h2 {
-    font-size: 60px;
+    font-size: clamp(54px, 5vw, 80px);
     margin-bottom: 30px;
     margin-top: 70px;
   }
@@ -158,31 +343,36 @@
     width: 450px;
     padding: 50px;
   }
-  .workFlex {
-    padding-right: 75px;
-  }
   .workSection h2 {
-    font-size: 50px;
-    padding-left: 50px;
+    font-size: clamp(56px, 6vw, 84px);
+    padding-inline: clamp(30px, 4vw, 50px);
   }
 }
 @media only screen and (max-width: 900px) {
   .workSection h2 {
-    padding-left: 30px;
+    padding-inline: 20px;
+    font-size: clamp(42px, 10vw, 56px);
   }
   .workBox {
     width: 350px;
     padding: 30px;
   }
-  .workFlex {
-    padding-right: 45px;
+  .workBox.connectBox {
+    padding-right: 18px;
+  }
+}
+
+@media only screen and (max-height: 900px) and (min-width: 901px) {
+  .workSection h2 {
+    font-size: clamp(54px, 5vw, 80px);
   }
 }
 
 @media only screen and (max-height: 650px) {
   .workSection h2 {
-    font-size: 40px;
+    font-size: clamp(38px, 8vh, 48px);
     margin-bottom: 20px;
+    margin-top: 50px;
   }
   .workBox {
     gap: 20px;
@@ -194,5 +384,15 @@
   }
   .workFlex {
     height: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .connectBox::before,
+  .connectBox::after {
+    animation: none;
+  }
+  .workLink svg,
+  .connectArrow svg {
+    transition: none;
   }
 }

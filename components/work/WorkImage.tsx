@@ -23,6 +23,7 @@ const WorkImage = (props: Props) => {
       {props.link && (
         <span className={styles.workLink} aria-hidden="true">
           <MdArrowOutward />
+          <MdArrowOutward />
         </span>
       )}
       <Image

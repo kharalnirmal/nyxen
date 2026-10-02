@@ -728,6 +728,7 @@ export default function InteractiveAsciiFooter({
 
   return (
     <footer
+      id="contact"
       ref={footerRef}
       className={footerClassName}
       aria-label={`${lowercaseName} portfolio footer`}

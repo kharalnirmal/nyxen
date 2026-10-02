@@ -81,6 +81,16 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --font-signature: var(--font-caveat);
+  --purple-text-color: var(--color-purple-700);
+  --purple-text-gradient: linear-gradient(
+    120deg,
+    var(--color-purple-800) 0%,
+    var(--color-purple-600) 45%,
+    var(--color-fuchsia-500) 100%
+  );
+  --work-border: #dedede;
 }
 
 .dark {
@@ -115,6 +125,14 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --work-border: #363636;
+  --purple-text-color: var(--color-purple-300);
+  --purple-text-gradient: linear-gradient(
+    120deg,
+    var(--color-purple-200) 0%,
+    var(--color-purple-400) 45%,
+    var(--color-fuchsia-300) 100%
+  );
 }
 
 @layer base {

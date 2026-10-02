@@ -1,4 +1,6 @@
 import localFont from "next/font/local";
+import { Caveat } from "next/font/google";
+import { Great_Vibes } from "next/font/google";
 
 export const clashDisplay = localFont({
   src: [
@@ -34,4 +36,14 @@ export const DepartureMono = localFont({
   variable: "--font-depMono",
   display: "swap",
   fallback: ["Helvetica"],
+});
+
+export const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+});
+export const Vibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-vibes",
 });

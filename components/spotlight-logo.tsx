@@ -281,14 +281,23 @@ export function SpotlightLogo() {
   return (
     <motion.svg
       ref={ref}
-      className="w-full h-auto touch-manipulation [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
+      className="h-auto w-full cursor-pointer touch-manipulation outline-none focus:outline-none focus-visible:opacity-75 focus-visible:outline-none [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
       viewBox={`0 0 ${GEOMETRY.width.toFixed(2)} ${GEOMETRY.height.toFixed(2)}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
+      aria-label="Interactive NK logo. Click for sound."
+      role="button"
+      tabIndex={0}
       initial="normal"
       whileTap="pressed"
       onTap={() => play()}
+      onPointerDown={(event) => event.preventDefault()}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          play();
+        }
+      }}
     >
       <defs>
         <pattern

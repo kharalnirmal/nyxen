@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { SpotlightLogo } from "@/components/spotlight-logo";
-import { Highlighter } from "../ui/highlighter";
+import { Highlighter } from "@/components/ui/highlighter";
 
 export default function Hero() {
   return (
@@ -14,6 +14,29 @@ export default function Hero() {
         <div className="relative flex justify-center items-center w-full max-w-6xl -translate-y-12 sm:-translate-y-16">
           <div className="relative w-full max-w-[42rem]">
             <SpotlightLogo />
+
+            <div className="top-[28%] right-[-3.5rem] sm:right-[-10rem] absolute flex items-end pointer-events-none">
+              <Image
+                src="/arrow/rotated-right-arrow-svgrepo-com.svg"
+                width={96}
+                height={96}
+                alt=""
+                className="opacity-55 dark:invert w-14 sm:w-20 h-14 sm:h-20 rotate-[380]"
+              />
+              <div className="font-[family-name:var(--font-caveat)] text-2xl sm:text-4xl text-center leading-none whitespace-nowrap rotate-6">
+                <Highlighter
+                  action="underline"
+                  color="#8200db"
+                  isView
+                  padding={-8}
+                >
+                  <span>About Me</span>
+                </Highlighter>
+                <span className="block text-muted-foreground text-xs sm:text-sm lowercase tracking-wide">
+                  Scroll
+                </span>
+              </div>
+            </div>
 
             <div className="relative flex justify-center mt-3 pt-7 sm:pt-10 min-h-24 sm:min-h-32">
               <a

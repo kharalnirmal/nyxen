@@ -110,7 +110,7 @@ export default function Preloader() {
     >
       <div ref={contentRef} className={styles.content}>
         <div ref={lottieRef} className={styles.lottie} aria-hidden="true">
-          <Lottie src="/lottie/Money.json" loop autoplay />
+          <Lottie src="/lottie/Money.json" loop={false} autoplay />
         </div>
 
         <p ref={textRef} className={`${styles.tagline} ${caveat.className}`}>

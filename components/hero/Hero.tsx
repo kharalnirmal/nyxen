@@ -11,29 +11,30 @@ export default function Hero() {
       className="relative flex flex-col bg-background px-5 sm:px-8 pt-24 sm:pt-28 lg:pt-32 pb-12 min-h-svh overflow-hidden"
     >
       <div className="flex flex-1 justify-center items-center">
-        <div className="relative flex justify-center items-center w-full max-w-6xl -translate-y-12 sm:-translate-y-16">
-          <div className="relative w-full max-w-[42rem]">
+        <div className="relative flex justify-center items-center w-full max-w-6xl -translate-y-[10rem] sm:-translate-y-16">
+          <div className="relative w-full sm:max-w-[32rem] lg:max-w-[42rem]">
             <SpotlightLogo />
 
-            <div className="top-[24%] sm:top-[28%] right-[-0.5rem] sm:right-[-10rem] absolute flex items-end pointer-events-none">
+            <div className="top-[24%] sm:top-[28%] -right-8 sm:-right-12 md:-right-24 lg:right-[-10rem] absolute flex items-end gap-1 pointer-events-none">
               <Image
                 src="/arrow/rotated-right-arrow-svgrepo-com.svg"
                 width={96}
                 height={96}
                 alt=""
-                className="opacity-55 dark:invert w-10 sm:w-20 h-10 sm:h-20 rotate-[380]"
+                loading="eager"
+                className="opacity-55 dark:invert w-10 h-10 sm:w-14 sm:h-14 lg:w-20 lg:h-20 rotate-[380]"
               />
-              <div className="font-[family-name:var(--font-caveat)] text-xl sm:text-4xl text-center leading-none whitespace-nowrap rotate-6">
+              <div className="font-[family-name:var(--font-caveat)] text-xl sm:text-2xl lg:text-4xl text-center leading-none whitespace-nowrap -rotate-40">
                 <Highlighter
                   action="underline"
                   color="#8200db"
                   isView
-                  padding={-8}
+                  padding={-55}
                 >
                   <span>About Me</span>
                 </Highlighter>
-                <span className="block text-muted-foreground text-xs sm:text-sm lowercase tracking-wide">
-                  Scroll
+                <span className="block -mt-0.5 text-muted-foreground text-xs sm:text-sm lg:text-xl lowercase tracking-wide">
+                  Scroll Down
                 </span>
               </div>
             </div>
@@ -81,6 +82,7 @@ export default function Hero() {
               width={96}
               height={96}
               alt=""
+              loading="eager"
               className="opacity-55 dark:invert w-12 sm:w-24 h-12 sm:h-24 rotate-[18deg]"
             />
           </div>

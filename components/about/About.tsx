@@ -22,7 +22,7 @@ export default function About() {
         <div className="z-10 relative">
           <h2
             id="about-heading"
-            className="max-w-3xl font-[family-name:var(--font-depMono)] text-[2.35rem] text-foreground sm:text-[clamp(2.7rem,5.4vw,5rem)] min-[380px]:text-[2.65rem] leading-[0.96] sm:leading-[0.92] tracking-[0.03em] sm:tracking-[0.035em]"
+            className="max-w-3xl font-[family-name:var(--font-clash)] font-semibold text-[2.35rem] text-foreground sm:text-[clamp(2.7rem,5.4vw,5rem)] min-[380px]:text-[2.65rem] leading-[0.96] sm:leading-[0.92] tracking-[0.03em] sm:tracking-[0.035em]"
           >
             NIRMAL
             <span className="block">KHARAL</span>
@@ -40,6 +40,7 @@ export default function About() {
                   height={24}
                   alt=""
                   aria-hidden="true"
+                  loading="eager"
                   className="opacity-45 dark:invert mt-0.5 size-4 sm:size-5 -rotate-12 transition-transform motion-reduce:transition-none group-hover:translate-x-1 duration-300 ease-out shrink-0"
                 />
                 <span>{detail}</span>

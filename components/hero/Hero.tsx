@@ -15,21 +15,21 @@ export default function Hero() {
           <div className="relative w-full sm:max-w-[32rem] lg:max-w-[42rem]">
             <SpotlightLogo />
 
-            <div className="top-[24%] sm:top-[28%] -right-8 sm:-right-12 md:-right-24 lg:right-[-10rem] absolute flex items-end gap-1 pointer-events-none">
+            <div className="top-[40%] sm:top-[28%] right-1 sm:-right-12 md:-right-24 lg:right-[-10rem] absolute flex items-end gap-1 pointer-events-none">
               <Image
                 src="/arrow/rotated-right-arrow-svgrepo-com.svg"
                 width={96}
                 height={96}
                 alt=""
                 loading="eager"
-                className="opacity-55 dark:invert w-10 h-10 sm:w-14 sm:h-14 lg:w-20 lg:h-20 rotate-[380]"
+                className="opacity-55 dark:invert w-10 sm:w-14 lg:w-20 h-10 sm:h-14 lg:h-20 rotate-[380]"
               />
               <div className="font-[family-name:var(--font-caveat)] text-xl sm:text-2xl lg:text-4xl text-center leading-none whitespace-nowrap -rotate-40">
                 <Highlighter
                   action="underline"
                   color="#8200db"
                   isView
-                  padding={-55}
+                  padding={-58}
                 >
                   <span>About Me</span>
                 </Highlighter>
@@ -55,7 +55,7 @@ export default function Hero() {
                   {" "}
                   <span>Resume</span>
                 </Highlighter>
-                <span className="text-muted-foreground text-xs sm:text-sm lowercase tracking-wide">
+                <span className="text-muted-foreground text-xs sm:text-xl lowercase tracking-wide">
                   click it
                 </span>
               </a>

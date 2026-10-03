@@ -118,6 +118,8 @@ const STYLES = `
 type MagneticButtonProps = React.HTMLAttributes<HTMLElement> & {
   as?: "a" | "button";
   href?: string;
+  target?: React.AnchorHTMLAttributes<HTMLAnchorElement>["target"];
+  rel?: string;
   type?: "button" | "submit" | "reset";
 };
 

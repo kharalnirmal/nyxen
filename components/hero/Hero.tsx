@@ -8,23 +8,23 @@ export default function Hero() {
     <section
       id="selected-work"
       aria-label="Introduction"
-      className="relative flex flex-col bg-background px-5 sm:px-8 pt-24 sm:pt-28 lg:pt-32 pb-12 min-h-svh overflow-hidden"
+      className="sticky top-0 flex min-h-[calc(100svh-5.5rem)] flex-col overflow-hidden bg-background px-6 py-5 sm:min-h-svh sm:px-8 sm:pt-28 sm:pb-12 lg:pt-32"
     >
       <div className="flex flex-1 justify-center items-center">
-        <div className="relative flex justify-center items-center w-full max-w-6xl -translate-y-[10rem] sm:-translate-y-16">
-          <div className="relative w-full sm:max-w-[32rem] lg:max-w-[42rem]">
+        <div className="relative flex w-full max-w-6xl items-center justify-center sm:-translate-y-16">
+          <div className="relative w-full max-w-[19rem] min-[400px]:max-w-[21rem] sm:max-w-[32rem] lg:max-w-[42rem]">
             <SpotlightLogo />
 
-            <div className="top-[40%] sm:top-[28%] right-1 sm:-right-12 md:-right-24 lg:right-[-10rem] absolute flex items-end gap-1 pointer-events-none">
+            <div className="top-[38%] right-0 absolute flex items-end gap-1 pointer-events-none sm:top-[28%] sm:-right-12 md:-right-24 lg:right-[-10rem]">
               <Image
                 src="/arrow/rotated-right-arrow-svgrepo-com.svg"
                 width={96}
                 height={96}
                 alt=""
                 loading="eager"
-                className="opacity-55 dark:invert w-10 sm:w-14 lg:w-20 h-10 sm:h-14 lg:h-20 rotate-[380]"
+                className="size-9 rotate-[380] opacity-55 sm:size-14 lg:size-20 dark:invert"
               />
-              <div className="font-[family-name:var(--font-caveat)] text-xl sm:text-2xl lg:text-4xl text-center leading-none whitespace-nowrap -rotate-40">
+              <div className="font-[family-name:var(--font-caveat)] text-lg text-center leading-none whitespace-nowrap -rotate-40 sm:text-2xl lg:text-4xl">
                 <Highlighter
                   action="underline"
                   color="#8200db"
@@ -33,18 +33,18 @@ export default function Hero() {
                 >
                   <span>About Me</span>
                 </Highlighter>
-                <span className="block -mt-0.5 text-muted-foreground text-xs sm:text-sm lg:text-xl lowercase tracking-wide">
+                <span className="block -mt-0.5 text-[0.65rem] text-muted-foreground lowercase tracking-wide sm:text-sm lg:text-xl">
                   Scroll Down
                 </span>
               </div>
             </div>
 
-            <div className="relative flex justify-center mt-3 pt-7 sm:pt-10 min-h-24 sm:min-h-32">
+            <div className="relative mt-2 flex min-h-20 justify-center pt-6 sm:mt-3 sm:min-h-32 sm:pt-10">
               <a
                 href="/resume/NirmalKharal-Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="z-10 relative flex flex-col items-center focus-visible:outline-none font-[family-name:var(--font-caveat)] text-3xl sm:text-5xl leading-none -rotate-6 transition-transform translate-x-8 sm:translate-x-12 hover:-translate-y-1"
+                className="relative z-10 flex translate-x-6 -rotate-6 flex-col items-center font-[family-name:var(--font-caveat)] text-3xl leading-none transition-transform hover:-translate-y-1 focus-visible:outline-none sm:translate-x-12 sm:text-5xl"
               >
                 <Highlighter
                   action="underline"
@@ -66,14 +66,14 @@ export default function Hero() {
                   width={112}
                   height={112}
                   alt=""
-                  className="opacity-55 dark:invert w-16 sm:w-20 h-16 sm:h-20 rotate-240 -scale-x-100"
+                  className="size-14 rotate-240 -scale-x-100 opacity-55 sm:size-20 dark:invert"
                 />
               </div>
             </div>
           </div>
 
-          <div className="bottom-[calc(100%-3rem)] sm:bottom-[calc(100%-6.5rem)] left-0 sm:left-[12%] absolute flex items-end gap-1">
-            <div className="font-[family-name:var(--font-caveat)] text-muted-foreground text-lg sm:text-3xl text-right leading-tight whitespace-nowrap -rotate-6">
+          <div className="absolute -top-12 left-0 flex items-end gap-1 sm:bottom-[calc(100%-6.5rem)] sm:top-auto sm:left-[12%]">
+            <div className="font-[family-name:var(--font-caveat)] text-base text-right leading-tight whitespace-nowrap text-muted-foreground -rotate-6 sm:text-3xl">
               <p>Follows your cursor</p>
               <p>Click for sound</p>
             </div>
@@ -83,7 +83,7 @@ export default function Hero() {
               height={96}
               alt=""
               loading="eager"
-              className="opacity-55 dark:invert w-12 sm:w-24 h-12 sm:h-24 rotate-[18deg]"
+              className="size-10 rotate-[18deg] opacity-55 sm:size-24 dark:invert"
             />
           </div>
         </div>

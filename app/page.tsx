@@ -1,3 +1,4 @@
+import About from "@/components/about/About";
 import { CinematicFooter } from "@/components/footer/motion-footer";
 import Hero from "@/components/hero/Hero";
 import Navbar from "@/components/navbar/Navbar";
@@ -10,7 +11,10 @@ export default function Home() {
       <Navbar />
       <Preloader />
 
-      <Hero />
+      <div className="relative">
+        <Hero />
+        <About />
+      </div>
       <Work />
 
       <CinematicFooter />

@@ -97,15 +97,21 @@ const Work = () => {
       <div className={`${styles.workContainer} `}>
         <h2 className="text-center">
           My{" "}
-          <Highlighter
-            isView
-            animationDuration={800}
-            action="underline"
-            color="#1D1D1D"
-            padding={-8}
-          >
-            <span className={Vibes.className}> Work</span>
-          </Highlighter>
+          <span>
+            {" "}
+            <Highlighter
+              isView
+              animationDuration={800}
+              action="underline"
+              color="var(--portfolio-accent)"
+              strokeWidth={1}
+              iterations={2}
+              offsetY={-8}
+            >
+              {" "}
+              Work
+            </Highlighter>
+          </span>
         </h2>
 
         <div className={styles.workFlex} ref={workFlexRef}>

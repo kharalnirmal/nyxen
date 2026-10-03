@@ -84,6 +84,7 @@
 
   --font-signature: var(--font-caveat);
   --portfolio-accent: #8200db;
+  --portfolio-accent-foreground: #fff;
   --work-border: #dedede;
 }
 
@@ -119,6 +120,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --portfolio-accent: #c084fc;
   --work-border: #363636;
 }
 

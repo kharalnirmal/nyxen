@@ -228,7 +228,7 @@
   border-radius: 999px;
   padding: 9px 10px 9px 24px;
   background-color: var(--portfolio-accent);
-  color: var(--background);
+  color: var(--portfolio-accent-foreground);
   font-family: var(--font-clash);
   font-weight: 500;
   transition:
@@ -243,8 +243,8 @@
   overflow: hidden;
   contain: paint;
   border-radius: 50%;
-  background-color: var(--background);
-  color: var(--portfolio-accent);
+  background-color: var(--foreground);
+  color: var(--background);
   font-size: 22px;
   transition:
     background-color 0.3s,
@@ -258,7 +258,7 @@
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .connectArrow svg:nth-child(2) {
-  transform: translate(-190%, 90%);
+  transform: translate(-225%, 125%);
 }
 .connectButton:focus-visible {
   outline: 2px solid var(--portfolio-accent);
@@ -269,8 +269,12 @@
     filter: brightness(1.08);
     transform: translateY(-2px);
   }
+  .connectButton:hover .connectArrow {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
   .connectButton:hover .connectArrow svg:first-child {
-    transform: translate(90%, -190%);
+    transform: translate(125%, -225%);
   }
   .connectButton:hover .connectArrow svg:nth-child(2) {
     transform: translate(-50%, -50%);

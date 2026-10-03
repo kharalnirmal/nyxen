@@ -27,7 +27,7 @@ export default function Hero() {
               <div className="font-[family-name:var(--font-caveat)] text-2xl sm:text-3xl lg:text-4xl text-center leading-none whitespace-nowrap -rotate-40">
                 <Highlighter
                   action="underline"
-                  color="#8200db"
+                  color="var(--portfolio-accent)"
                   isView
                   padding={-55}
                 >
@@ -48,7 +48,7 @@ export default function Hero() {
               >
                 <Highlighter
                   action="underline"
-                  color="#8200db"
+                  color="var(--portfolio-accent)"
                   isView
                   padding={-8}
                 >

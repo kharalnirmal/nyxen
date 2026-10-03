@@ -7,11 +7,7 @@
   font-family: var(--font-clash);
 }
 .workSection h2 > span {
-  color: var(--purple-text-color);
-  background-image: var(--purple-text-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--portfolio-accent);
 }
 .workSection {
   transition: 0s;
@@ -210,11 +206,7 @@
   display: inline-block;
   padding: 0.2em 0.06em 0.08em;
   margin-block: -0.2em -0.08em;
-  color: var(--purple-text-color);
-  background-image: var(--purple-text-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--portfolio-accent);
   font-size: 1.35em;
   font-weight: 400;
   line-height: 1.2;
@@ -235,7 +227,7 @@
   border: 1px solid transparent;
   border-radius: 999px;
   padding: 9px 10px 9px 24px;
-  background-color: var(--purple-text-color);
+  background-color: var(--portfolio-accent);
   color: var(--background);
   font-family: var(--font-clash);
   font-weight: 500;
@@ -252,7 +244,7 @@
   contain: paint;
   border-radius: 50%;
   background-color: var(--background);
-  color: var(--purple-text-color);
+  color: var(--portfolio-accent);
   font-size: 22px;
   transition:
     background-color 0.3s,
@@ -269,7 +261,7 @@
   transform: translate(-190%, 90%);
 }
 .connectButton:focus-visible {
-  outline: 2px solid var(--purple-text-color);
+  outline: 2px solid var(--portfolio-accent);
   outline-offset: 4px;
 }
 @media (hover: hover) {

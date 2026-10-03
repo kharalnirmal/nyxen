@@ -118,7 +118,7 @@ export default function Preloader() {
           {showStrike ? (
             <Highlighter
               action="strike-through"
-              color="#8200db"
+              color="var(--portfolio-accent)"
               strokeWidth={5}
               animationDuration={700}
               iterations={3}

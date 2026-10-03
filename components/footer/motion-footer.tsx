@@ -348,7 +348,7 @@ export function CinematicFooter() {
               <Highlighter
                 action="underline"
                 strokeWidth={0.8}
-                color="#8200db"
+                color="var(--portfolio-accent)"
                 isView
               >
                 Have an idea in mind?

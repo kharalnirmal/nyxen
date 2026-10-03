@@ -4,8 +4,17 @@ import * as React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  FaDiscord,
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
+import { caveat } from "@/app/font";
+import { clashDisplay } from "@/app/font";
 
 import { cn } from "@/lib/utils";
+import { Highlighter } from "../ui/highlighter";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -14,14 +23,14 @@ if (typeof window !== "undefined") {
 const STYLES = `
 .cinematic-footer-wrapper {
   -webkit-font-smoothing: antialiased;
-  --pill-bg-1: color-mix(in oklch, var(--foreground) 3%, transparent);
-  --pill-bg-2: color-mix(in oklch, var(--foreground) 1%, transparent);
+  --pill-bg-1: color-mix(in oklch, var(--card) 88%, var(--foreground) 12%);
+  --pill-bg-2: color-mix(in oklch, var(--card) 96%, var(--foreground) 4%);
   --pill-shadow: color-mix(in oklch, var(--background) 50%, transparent);
   --pill-highlight: color-mix(in oklch, var(--foreground) 10%, transparent);
   --pill-inset-shadow: color-mix(in oklch, var(--background) 80%, transparent);
-  --pill-border: color-mix(in oklch, var(--foreground) 8%, transparent);
-  --pill-bg-1-hover: color-mix(in oklch, var(--foreground) 8%, transparent);
-  --pill-bg-2-hover: color-mix(in oklch, var(--foreground) 2%, transparent);
+  --pill-border: color-mix(in oklch, var(--foreground) 14%, transparent);
+  --pill-bg-1-hover: color-mix(in oklch, var(--card) 82%, var(--foreground) 18%);
+  --pill-bg-2-hover: color-mix(in oklch, var(--card) 92%, var(--foreground) 8%);
   --pill-border-hover: color-mix(in oklch, var(--foreground) 20%, transparent);
   --pill-shadow-hover: color-mix(in oklch, var(--background) 70%, transparent);
   --pill-highlight-hover: color-mix(in oklch, var(--foreground) 20%, transparent);
@@ -82,8 +91,9 @@ const STYLES = `
 .footer-giant-bg-text {
   font-size: clamp(7rem, 22vw, 25rem);
   line-height: 0.75;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0.03em;
+  text-indent: 0.40em;
   color: transparent;
   -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground) 5%, transparent);
   background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 10%, transparent) 0%, transparent 60%);
@@ -194,7 +204,7 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
 MagneticButton.displayName = "MagneticButton";
 
 const MarqueeItem = () => (
-  <div className="flex items-center space-x-12 px-6">
+  <div className={cn("flex items-center space-x-12 px-6", caveat.className)}>
     <span>Full-stack development</span>
     <span className="text-primary/60">✦</span>
     <span>Thoughtful interfaces</span>
@@ -207,6 +217,29 @@ const MarqueeItem = () => (
     <span className="text-primary/60">✦</span>
   </div>
 );
+
+const SOCIAL_LINKS = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/kharalnirmal/",
+    icon: FaLinkedinIn,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/kharalnirmal",
+    icon: FaGithub,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/nirmalkharal/",
+    icon: FaInstagram,
+  },
+  {
+    label: "Discord",
+    href: "https://discord.com/users/744494586705084426",
+    icon: FaDiscord,
+  },
+];
 
 export function CinematicFooter() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -287,7 +320,10 @@ export function CinematicFooter() {
 
           <div
             ref={giantTextRef}
-            className="-bottom-[2vh] left-1/2 z-0 absolute footer-giant-bg-text whitespace-nowrap -translate-x-1/2 pointer-events-none select-none"
+            className={cn(
+              "bottom-[-2vh] z-0 absolute inset-x-0 footer-giant-bg-text w-full text-center whitespace-nowrap pointer-events-none select-none",
+              clashDisplay.className,
+            )}
             aria-hidden="true"
           >
             NIRMAL
@@ -301,12 +337,28 @@ export function CinematicFooter() {
           </div>
 
           <div className="z-10 relative flex flex-col flex-1 justify-center items-center mx-auto mt-20 px-6 w-full max-w-5xl">
-            <p className="mb-4 font-semibold text-muted-foreground text-xs md:text-sm uppercase tracking-[0.35em]">
-              Have an idea in mind?
+            <p
+              className={cn(
+                "mb-4 font-semibold text-muted-foreground text-xs md:text-sm uppercase tracking-[0.35em]",
+                caveat.className,
+              )}
+            >
+              <Highlighter
+                action="underline"
+                strokeWidth={0.8}
+                color="#8200db"
+                isView
+              >
+                Have an idea in mind?
+              </Highlighter>
             </p>
+
             <h2
               ref={headingRef}
-              className="mb-8 md:mb-12 max-w-4xl font-black footer-text-glow text-4xl sm:text-6xl md:text-8xl text-center tracking-tighter"
+              className={cn(
+                "mb-8 md:mb-12 max-w-4xl font-black footer-text-glow text-4xl sm:text-6xl md:text-8xl text-center tracking-tight",
+                clashDisplay.className,
+              )}
             >
               Let&apos;s make it memorable.
             </h2>
@@ -331,11 +383,31 @@ export function CinematicFooter() {
                 </MagneticButton>
                 <MagneticButton
                   as="a"
-                  href="https://github.com/kharalnirmal"
+                  href="mailto:nirmalkharal40@gmail.com"
                   className="px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-foreground text-sm md:text-base footer-glass-pill"
                 >
                   Contact me
                 </MagneticButton>
+              </div>
+
+              <div
+                className="flex flex-wrap justify-center gap-2 sm:gap-3 w-full"
+                aria-label="Social profiles"
+              >
+                {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+                  <MagneticButton
+                    key={label}
+                    as="a"
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit Nirmal Kharal on ${label}`}
+                    className="flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-semibold text-muted-foreground hover:text-foreground text-xs sm:text-sm footer-glass-pill"
+                  >
+                    <Icon className="size-4" aria-hidden="true" />
+                    <span>{label}</span>
+                  </MagneticButton>
+                ))}
               </div>
             </div>
           </div>

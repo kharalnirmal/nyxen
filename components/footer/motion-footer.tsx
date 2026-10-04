@@ -4,12 +4,7 @@ import * as React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  FaDiscord,
-  FaGithub,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import { FaDiscord, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { caveat } from "@/app/font";
 import { clashDisplay } from "@/app/font";
 
@@ -99,6 +94,14 @@ const STYLES = `
   background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 10%, transparent) 0%, transparent 60%);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+@media (max-width: 40rem) {
+  .footer-giant-bg-text {
+    font-size: 21vw;
+    text-indent: 0.4em;
+    text:center
+  }
 }
 
 .footer-text-glow {

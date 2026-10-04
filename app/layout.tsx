@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nirmal Kharal — Full-stack Developer",
+  title: "Hey !",
   description:
     "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems.",
 };

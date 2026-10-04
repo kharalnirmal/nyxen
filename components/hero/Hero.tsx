@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { SpotlightLogo } from "@/components/spotlight-logo";
+import { SpotlightLogo } from "@/components/ui/spotlight-logo";
 import { Highlighter } from "@/components/ui/highlighter";
 
 export default function Hero() {

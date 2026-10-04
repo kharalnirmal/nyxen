@@ -52,7 +52,7 @@ export default function LogoCloudBlock() {
   return (
     <section
       aria-label="Technology stack"
-      className="isolate relative flex flex-col items-center bg-background px-6 sm:px-8 pt-3 sm:pt-4 pb-12 sm:pb-16 border-foreground/10 border-b w-full overflow-hidden text-foreground"
+      className="isolate relative flex flex-col items-center bg-background px-6 sm:px-8 pt-3 sm:pt-4 pb-6 lg:pb-0 2xl:pb-8 border-foreground/10 border-b w-full overflow-hidden text-foreground"
     >
       <style>{`
         @keyframes logo-cloud-marquee {

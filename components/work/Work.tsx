@@ -66,7 +66,7 @@ const Work = () => {
       const media = gsap.matchMedia();
 
       media.add(
-        "(prefers-reduced-motion: no-preference)",
+        "(min-width: 1025px) and (prefers-reduced-motion: no-preference)",
         () => {
           const getScrollDistance = () =>
             Math.max(
@@ -74,8 +74,7 @@ const Work = () => {
               (workFlexRef.current?.scrollWidth ?? 0) - window.innerWidth,
             );
 
-          const getScrollDuration = () =>
-            getScrollDistance() * (window.innerWidth <= 900 ? 0.7 : 1);
+          const getScrollDuration = () => getScrollDistance();
 
           gsap.to(workFlexRef.current, {
             x: () => -getScrollDistance(),

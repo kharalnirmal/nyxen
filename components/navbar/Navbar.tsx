@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { useReducedMotion } from "motion/react";
 import { FaGithub } from "react-icons/fa";
 
-import { MobiusLoopIcon } from "@/components/mobius-loop-icon";
+import { MobiusLoopIcon } from "@/components/ui/mobius-loop-icon";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 export default function Navbar() {

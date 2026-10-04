@@ -1,5 +1,5 @@
 .workSection h2 {
-  margin-top: clamp(70px, 8vh, 120px);
+  margin-top: clamp(40px, 5vh, 72px);
   padding-inline: clamp(24px, 5vw, 80px);
   font-size: 2.25rem;
   font-weight: 600;
@@ -305,7 +305,7 @@
   }
   .workSection h2 {
     margin-bottom: 30px;
-    margin-top: 70px;
+    margin-top: 40px;
   }
 }
 @media only screen and (max-width: 1400px) {
@@ -326,13 +326,18 @@
     padding-inline: clamp(30px, 4vw, 50px);
   }
 }
+@media only screen and (min-width: 901px) and (max-width: 1535px) {
+  .workSection h2 {
+    margin-top: 8px;
+  }
+}
 @media only screen and (max-width: 900px) {
   .workSection {
     height: 100svh;
   }
   .workSection h2 {
     padding-inline: 20px;
-    margin-top: clamp(32px, 6svh, 48px);
+    margin-top: clamp(24px, 4svh, 36px);
     margin-bottom: 18px;
   }
   .workBox {
@@ -349,18 +354,45 @@
 @media only screen and (max-height: 650px) and (min-width: 901px) {
   .workSection h2 {
     margin-bottom: 20px;
-    margin-top: 50px;
+    margin-top: 32px;
   }
   .workBox {
     gap: 20px;
   }
 }
-@media only screen and (max-width: 1025px) {
+@media only screen and (max-width: 1024px) {
+  .workSection {
+    height: auto;
+    overflow: visible;
+  }
   .workContainer {
+    height: auto;
     align-content: normal;
   }
   .workFlex {
+    width: 100%;
+    min-width: 0;
     height: auto;
+    flex: none;
+    flex-direction: column;
+  }
+  .workBox {
+    width: 100%;
+    border-right: 0;
+  }
+  .workTitle h3 {
+    font-size: clamp(40px, 6vw, 50px);
+    line-height: 1;
+  }
+  .workInfo h4 {
+    font-size: clamp(18px, 2.5vw, 22px);
+  }
+  .workInfo p {
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.5;
+  }
+  .connectBox {
+    min-height: 320px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

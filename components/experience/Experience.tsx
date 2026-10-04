@@ -3,12 +3,12 @@
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Code2, Globe2, Handshake, Users2, WalletCards } from "lucide-react";
+import { CircleDollarSign, Code2, Globe2, Users2 } from "lucide-react";
 
 import {
   WorkExperience,
   type ExperienceItemType,
-} from "@/components/work-experience";
+} from "@/components/work/work-experience";
 import { Highlighter } from "../ui/highlighter";
 
 gsap.registerPlugin(useGSAP);
@@ -26,7 +26,7 @@ const experiences: ExperienceItemType[] = [
         employmentPeriod: { start: "2.2026", end: "7.2026" },
         employmentType: "Part-time",
         icon: <Code2 />,
-        isExpanded: false,
+        isExpanded: true,
         description:
           "- Worked on the AIESEC in Nepal website as part of the National Support Team.\n- Contributed to frontend development, interface implementation, and product features.\n- Built responsive interfaces and supported feature development.\n- Collaborated with the NST team during development and iteration of the platform.",
         skills: [
@@ -95,7 +95,7 @@ const volunteering: ExperienceItemType[] = [
         title: "Vice President",
         employmentPeriod: { start: "4.2026", end: "4.2027" },
         employmentType: "Leadership",
-        icon: <Handshake />,
+        icon: <Users2 />,
         description:
           "- Help lead the chapter and contribute to its overall direction and execution.\n- Plan and support technology-focused events and initiatives for students.\n- Work with teams to organize impactful learning and community programs.\n- Coordinate with students, partners, and external stakeholders around chapter activities.\n- Support leadership, collaboration, and growth across the local tech community.",
         skills: [
@@ -112,7 +112,7 @@ const volunteering: ExperienceItemType[] = [
         title: "Treasurer",
         employmentPeriod: { start: "05.2025", end: "05.2026" },
         employmentType: "Leadership",
-        icon: <WalletCards />,
+        icon: <CircleDollarSign />,
         description:
           "- Managed financial records and tracked chapter expenses.\n- Supported budgeting for events and community initiatives.\n- Coordinated with the executive team on financial decisions.\n- Helped maintain transparent and responsible use of chapter funds.",
         skills: [
@@ -189,16 +189,24 @@ export default function Experience() {
     >
       <div
         aria-hidden="true"
-        className="-z-10 absolute inset-0 opacity-60 pointer-events-none [background-image:repeating-linear-gradient(to_bottom,transparent_0,transparent_31px,color-mix(in_oklab,var(--foreground)_6%,transparent)_32px)] [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
+        className="-z-10 absolute inset-0 opacity-[0.035] dark:opacity-[0.06] pointer-events-none [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:40px_40px] [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_84%,transparent)] sm:[background-size:64px_64px]"
       />
-      <h2 className="font-[family-name:var(--font-clash)] font-semibold text-4xl sm:text-6xl text-center tracking-tight">
-        <Highlighter action="underline" isView color="var(--portfolio-accent)">
-          Experience &amp; Volunteering
-        </Highlighter>
+      <h2 className="z-10 relative font-[family-name:var(--font-clash)] font-semibold text-4xl sm:text-6xl text-center tracking-tight">
+        <span className="max-[1024px]:[&>svg]:hidden">
+          <Highlighter
+            action="underline"
+            multiline
+            iterations={3}
+            isView
+            color="var(--portfolio-accent)"
+          >
+            Experience &amp; Volunteering
+          </Highlighter>
+        </span>
       </h2>
 
-      <div className="relative mx-auto mt-10 sm:mt-16 mb-10 lg:pt-10 w-fit">
-        <div className="lg:top-0 lg:left-0 lg:absolute flex justify-center items-end gap-1 mb-3 lg:mb-0 -translate-x-4 sm:-translate-x-8 lg:-translate-x-[88%]">
+      <div className="z-10 relative mx-auto mt-10 sm:mt-16 mb-10 lg:pt-10 w-fit">
+        <div className="lg:top-0 lg:left-0 lg:absolute flex justify-center items-end gap-1 mb-3 lg:mb-0 -translate-x-24 sm:-translate-x-40 lg:-translate-x-[88%]">
           <span className="font-[family-name:var(--font-caveat)] text-foreground/65 text-xl sm:text-3xl whitespace-nowrap -rotate-3 sm:-rotate-6">
             What do you want to see?
           </span>
@@ -262,7 +270,7 @@ export default function Experience() {
         id="experience-panel"
         role="tabpanel"
         aria-labelledby={`${activeView}-tab`}
-        className="mx-auto max-w-3xl"
+        className="z-10 relative mx-auto max-w-3xl"
       >
         <WorkExperience
           className="bg-transparent"

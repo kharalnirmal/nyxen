@@ -13,8 +13,8 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import { Separator } from "@/components/ui/separator"
-import type { ChevronsUpDownIconHandle } from "@/components/chevrons-up-down-icon"
-import { ChevronsUpDownIcon } from "@/components/chevrons-up-down-icon"
+import type { ChevronsUpDownIconHandle } from "@/components/ui/chevrons-up-down-icon"
+import { ChevronsUpDownIcon } from "@/components/ui/chevrons-up-down-icon"
 
 export type ExperiencePositionItemType = {
   /** Unique identifier for the position */
@@ -90,7 +90,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
   return (
     <div className="space-y-4 py-4">
       <div className="not-prose flex items-center gap-3">
-        <div className="flex size-6 shrink-0 items-center justify-center">
+        <div className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-line ring-offset-1 ring-offset-background">
           {experience.companyLogo ? (
             <>
               <Image
@@ -99,7 +99,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
                 width={40}
                 height={40}
                 className={cn(
-                  "size-6 rounded-sm object-contain",
+                  "size-5 object-contain",
                   experience.companyLogoDark && "dark:hidden"
                 )}
               />
@@ -109,7 +109,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
                   alt={experience.companyName}
                   width={40}
                   height={40}
-                  className="hidden size-6 rounded-sm object-contain dark:block"
+                  className="hidden size-5 object-contain dark:block"
                 />
               )}
             </>
@@ -118,7 +118,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
           )}
         </div>
 
-        <h3 className="text-lg/snug font-semibold">
+        <h3 className="text-xl/snug font-semibold">
           {experience.companyWebsite ? (
             <a
               className="link"
@@ -144,12 +144,12 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
         )}
       </div>
 
-      <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
-        {experience.positions.map((position) => (
+      <div className="relative space-y-4 before:absolute before:top-3 before:bottom-3 before:left-3 before:w-px before:bg-border">
+        {experience.positions.map((position, index) => (
           <ExperiencePositionItem
             key={position.id}
             position={position}
-            showTimelineTail={experience.positions.length === 1}
+            isLastPosition={index === experience.positions.length - 1}
           />
         ))}
       </div>
@@ -159,12 +159,12 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
 
 export type ExperiencePositionItemProps = {
   position: ExperiencePositionItemType
-  showTimelineTail?: boolean
+  isLastPosition?: boolean
 }
 
 export function ExperiencePositionItem({
   position,
-  showTimelineTail = false,
+  isLastPosition = false,
 }: ExperiencePositionItemProps) {
   const chevronsUpDownIconRef = useRef<ChevronsUpDownIconHandle>(null)
 
@@ -185,17 +185,11 @@ export function ExperiencePositionItem({
 
   return (
     <Collapsible
-      className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background"
+      className="relative"
       defaultOpen={position.isExpanded}
       onOpenChange={handleOpenChange}
       disabled={!position.description}
     >
-      {showTimelineTail && (
-        <span
-          aria-hidden="true"
-          className="absolute top-6 left-3 z-1 h-4 w-px bg-border"
-        />
-      )}
       <CollapsibleTrigger
         className={cn(
           "group/experience-position not-prose block w-full text-left select-none",
@@ -282,7 +276,13 @@ export function ExperiencePositionItem({
       </CollapsibleContent>
 
       {Array.isArray(position.skills) && position.skills.length > 0 && (
-        <ul className="not-prose flex flex-wrap gap-1.5 pt-3 pl-9">
+        <ul
+          className={cn(
+            "not-prose relative flex flex-wrap gap-1.5 pt-3 pl-9",
+            isLastPosition &&
+              "before:absolute before:top-[1.4rem] before:bottom-0 before:left-3 before:w-px before:bg-[color-mix(in_oklab,var(--portfolio-accent)_2.5%,var(--background))] after:absolute after:top-[1.4rem] after:left-3 after:h-px after:w-4 after:bg-border"
+          )}
+        >
           {position.skills.map((skill, index) => (
             <li key={index} className="flex">
               <Skill>{skill}</Skill>

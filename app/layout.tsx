@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nirmalkharal.dev"),
+  metadataBase: new URL("https://www.nirmalkharal.dev"),
   title: "Hey !",
   description:
     "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems.",

@@ -328,7 +328,7 @@
 }
 @media only screen and (max-width: 900px) {
   .workSection {
-    height: clamp(520px, 72svh, 640px);
+    height: 100svh;
   }
   .workSection h2 {
     padding-inline: 20px;
@@ -364,6 +364,16 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .workFlex {
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+  }
+  .workBox {
+    scroll-snap-align: start;
+  }
   .connectBox::after {
     animation: none;
   }

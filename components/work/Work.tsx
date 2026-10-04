@@ -63,27 +63,36 @@ const Work = () => {
 
   useGSAP(
     () => {
-      const getScrollDistance = () =>
-        Math.max(
-          0,
-          (workFlexRef.current?.scrollWidth ?? 0) - window.innerWidth,
-        );
+      const media = gsap.matchMedia();
 
-      const getScrollDuration = () =>
-        getScrollDistance() * (window.innerWidth <= 900 ? 0.7 : 1);
+      media.add(
+        "(prefers-reduced-motion: no-preference)",
+        () => {
+          const getScrollDistance = () =>
+            Math.max(
+              0,
+              (workFlexRef.current?.scrollWidth ?? 0) - window.innerWidth,
+            );
 
-      gsap.to(workFlexRef.current, {
-        x: () => -getScrollDistance(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${getScrollDuration()}`,
-          scrub: 1,
-          pin: true,
-          invalidateOnRefresh: true,
+          const getScrollDuration = () =>
+            getScrollDistance() * (window.innerWidth <= 900 ? 0.7 : 1);
+
+          gsap.to(workFlexRef.current, {
+            x: () => -getScrollDistance(),
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: () => `+=${getScrollDuration()}`,
+              scrub: 1,
+              pin: true,
+              invalidateOnRefresh: true,
+            },
+          });
         },
-      });
+      );
+
+      return () => media.revert();
     },
     { scope: sectionRef },
   );

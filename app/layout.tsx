@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Hey !",
     description:
       "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems.",
-    url: "https://nirmalkharal.dev",
+    url: "https://www.nirmalkharal.dev",
     siteName: "Nirmal Kharal",
     type: "website",
     images: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hey !",
     description:
-      "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems..",
+      "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems.",
     images: ["/og-image.png"],
   },
 };

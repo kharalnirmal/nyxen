@@ -11,7 +11,7 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="z-10 isolate relative bg-background px-6 sm:px-8 py-12 sm:py-18 lg:py-22 border-foreground/10 border-t overflow-hidden"
+      className="z-10 isolate relative bg-background px-6 pt-12 pb-6 sm:px-8 sm:pt-18 sm:pb-8 lg:pt-22 lg:pb-10 border-foreground/10 border-t overflow-hidden"
     >
       <div
         aria-hidden="true"

@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { Code2, Globe2, Handshake, Users2, WalletCards } from "lucide-react";
 
 import {
@@ -8,6 +10,8 @@ import {
   type ExperienceItemType,
 } from "@/components/work-experience";
 import { Highlighter } from "../ui/highlighter";
+
+gsap.registerPlugin(useGSAP);
 
 const experiences: ExperienceItemType[] = [
   {
@@ -127,11 +131,68 @@ export default function Experience() {
   const [activeView, setActiveView] = useState<"experience" | "volunteering">(
     "experience",
   );
+  const tabListRef = useRef<HTMLDivElement>(null);
+  const activePillRef = useRef<HTMLSpanElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+
+  useGSAP(
+    () => {
+      const activeButton = tabListRef.current?.querySelector<HTMLElement>(
+        `[data-view="${activeView}"]`,
+      );
+      const activePill = activePillRef.current;
+
+      if (!activeButton || !activePill) return;
+
+      const movePill = (duration: number) => {
+        gsap.to(activePill, {
+          autoAlpha: 1,
+          x: activeButton.offsetLeft,
+          width: activeButton.offsetWidth,
+          duration,
+          ease: "power3.out",
+        });
+      };
+
+      movePill(isFirstRender.current ? 0 : 0.45);
+      gsap.fromTo(
+        panelRef.current,
+        { autoAlpha: 0, y: 10 },
+        { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" },
+      );
+      isFirstRender.current = false;
+
+      const handleResize = () => movePill(0);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    },
+    { dependencies: [activeView] },
+  );
+
+  const switchView = (view: "experience" | "volunteering") => {
+    if (view === activeView) return;
+
+    gsap.to(panelRef.current, {
+      autoAlpha: 0,
+      y: -8,
+      duration: 0.18,
+      ease: "power2.in",
+      onComplete: () => setActiveView(view),
+    });
+  };
 
   return (
-    <section id="experience" className="px-4 sm:px-8 py-16 sm:py-24">
+    <section
+      id="experience"
+      className="isolate relative bg-[color-mix(in_oklab,var(--portfolio-accent)_2.5%,var(--background))] px-4 sm:px-8 py-16 sm:py-24 border-foreground/10 border-y overflow-hidden"
+    >
+      <div
+        aria-hidden="true"
+        className="-z-10 absolute inset-0 opacity-60 pointer-events-none [background-image:repeating-linear-gradient(to_bottom,transparent_0,transparent_31px,color-mix(in_oklab,var(--foreground)_6%,transparent)_32px)] [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
+      />
       <h2 className="font-[family-name:var(--font-clash)] font-semibold text-4xl sm:text-6xl text-center tracking-tight">
-        <Highlighter action="underline" color="var(--portfolio-accent)">
+        <Highlighter action="underline" isView color="var(--portfolio-accent)">
           Experience &amp; Volunteering
         </Highlighter>
       </h2>
@@ -164,22 +225,29 @@ export default function Experience() {
         </div>
 
         <div
+          ref={tabListRef}
           role="tablist"
           aria-label="Experience categories"
-          className="flex flex-wrap justify-center gap-2 sm:gap-3"
+          className="relative flex flex-wrap justify-center gap-2 sm:gap-3"
         >
+          <span
+            ref={activePillRef}
+            aria-hidden="true"
+            className="top-0 bottom-0 left-0 absolute bg-foreground opacity-0 rounded-full pointer-events-none"
+          />
           {(["experience", "volunteering"] as const).map((view) => (
             <button
               key={view}
+              data-view={view}
               id={`${view}-tab`}
               type="button"
               role="tab"
               aria-selected={activeView === view}
               aria-controls="experience-panel"
-              onClick={() => setActiveView(view)}
-              className={`rounded-full border px-5 py-2.5 text-base font-medium capitalize transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:px-8 sm:text-lg ${
+              onClick={() => switchView(view)}
+              className={`z-10 relative rounded-full border px-5 py-2.5 text-base font-medium capitalize transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:px-8 sm:text-lg ${
                 activeView === view
-                  ? "border-foreground bg-foreground text-background"
+                  ? "border-transparent text-background"
                   : "border-foreground/20 text-foreground/60 hover:border-foreground/50 hover:text-foreground"
               }`}
             >
@@ -190,12 +258,14 @@ export default function Experience() {
       </div>
 
       <div
+        ref={panelRef}
         id="experience-panel"
         role="tabpanel"
         aria-labelledby={`${activeView}-tab`}
         className="mx-auto max-w-3xl"
       >
         <WorkExperience
+          className="bg-transparent"
           experiences={activeView === "experience" ? experiences : volunteering}
         />
       </div>

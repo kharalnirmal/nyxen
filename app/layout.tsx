@@ -15,9 +15,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nirmalkharal.dev"),
   title: "Hey !",
   description:
     "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems.",
+  openGraph: {
+    title: "Hey !",
+    description:
+      "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems.",
+    url: "https://nirmalkharal.dev",
+    siteName: "Nirmal Kharal",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Nirmal Kharal Portfolio",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Hey !",
+    description:
+      "Portfolio of Nirmal Kharal, a full-stack developer creating thoughtful interfaces and robust systems..",
+    images: ["/og-image.png"],
+  },
 };
 
 const themeScript = `

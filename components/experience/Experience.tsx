@@ -28,7 +28,7 @@ const experiences: ExperienceItemType[] = [
         icon: <Code2 />,
         isExpanded: false,
         description:
-          "Selected for the National Support Team to contribute to the AIESEC in Nepal website through frontend implementation and product development.\n\n- Worked on the AIESEC in Nepal website as part of the National Support Team.\n- Contributed to frontend development, interface implementation, and product features.\n- Built responsive interfaces and supported feature development.\n- Collaborated with the NST team during development and iteration of the platform.",
+          "- Worked on the AIESEC in Nepal website as part of the National Support Team.\n- Contributed to frontend development, interface implementation, and product features.\n- Built responsive interfaces and supported feature development.\n- Collaborated with the NST team during development and iteration of the platform.",
         skills: [
           "Frontend Development",
           "React",
@@ -55,7 +55,7 @@ const volunteering: ExperienceItemType[] = [
         employmentType: "Leadership",
         icon: <Users2 />,
         description:
-          "Leading business development for AIESEC in Lumbini, focusing on partnerships, outreach, stakeholder relationships, and team execution.\n\n- Lead the Business Development function for the local chapter.\n- Work on partnerships, outreach, and stakeholder relationship building.\n- Coordinate with the executive board and team members on local chapter initiatives.\n- Support strategy, execution, and business development activities throughout the term.",
+          "- Lead the Business Development function for the local chapter.\n- Work on partnerships, outreach, and stakeholder relationship building.\n- Coordinate with the executive board and team members on local chapter initiatives.\n- Support strategy, execution, and business development activities throughout the term.",
         skills: [
           "Leadership",
           "Business Development",
@@ -72,7 +72,7 @@ const volunteering: ExperienceItemType[] = [
         employmentType: "Leadership",
         icon: <Globe2 />,
         description:
-          "Managed international relations for AIESEC in Lumbini, connecting with AIESEC members in other countries to promote Lumbini as an exchange destination.\n\n- Built relationships with AIESEC members and entities in other countries.\n- Promoted Lumbini and its local opportunities to international exchange partners.\n- Supported communication and coordination for exchange opportunities.\n- Helped strengthen international partnerships and outreach.",
+          "- Built relationships with AIESEC members and entities in other countries.\n- Promoted Lumbini and its local opportunities to international exchange partners.\n- Supported communication and coordination for exchange opportunities.\n- Helped strengthen international partnerships and outreach.",
         skills: [
           "International Relations",
           "Exchange Promotion",
@@ -97,7 +97,7 @@ const volunteering: ExperienceItemType[] = [
         employmentType: "Leadership",
         icon: <Handshake />,
         description:
-          "Serving as Vice President of CSITAN Rupandehi, leading student-focused technology initiatives, events, and community activities.\n\n- Help lead the chapter and contribute to its overall direction and execution.\n- Plan and support technology-focused events and initiatives for students.\n- Work with teams to organize impactful learning and community programs.\n- Coordinate with students, partners, and external stakeholders around chapter activities.\n- Support leadership, collaboration, and growth across the local tech community.",
+          "- Help lead the chapter and contribute to its overall direction and execution.\n- Plan and support technology-focused events and initiatives for students.\n- Work with teams to organize impactful learning and community programs.\n- Coordinate with students, partners, and external stakeholders around chapter activities.\n- Support leadership, collaboration, and growth across the local tech community.",
         skills: [
           "Leadership",
           "Community Building",
@@ -114,7 +114,7 @@ const volunteering: ExperienceItemType[] = [
         employmentType: "Leadership",
         icon: <WalletCards />,
         description:
-          "Served as Treasurer of CSIT Association of Nepal - Rupandehi, supporting the chapter's financial planning and accountability.\n\n- Managed financial records and tracked chapter expenses.\n- Supported budgeting for events and community initiatives.\n- Coordinated with the executive team on financial decisions.\n- Helped maintain transparent and responsible use of chapter funds.",
+          "- Managed financial records and tracked chapter expenses.\n- Supported budgeting for events and community initiatives.\n- Coordinated with the executive team on financial decisions.\n- Helped maintain transparent and responsible use of chapter funds.",
         skills: [
           "Financial Management",
           "Budgeting",

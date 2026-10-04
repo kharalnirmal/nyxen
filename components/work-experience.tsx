@@ -146,7 +146,11 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
 
       <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
         {experience.positions.map((position) => (
-          <ExperiencePositionItem key={position.id} position={position} />
+          <ExperiencePositionItem
+            key={position.id}
+            position={position}
+            showTimelineTail={experience.positions.length === 1}
+          />
         ))}
       </div>
     </div>
@@ -155,10 +159,12 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
 
 export type ExperiencePositionItemProps = {
   position: ExperiencePositionItemType
+  showTimelineTail?: boolean
 }
 
 export function ExperiencePositionItem({
   position,
+  showTimelineTail = false,
 }: ExperiencePositionItemProps) {
   const chevronsUpDownIconRef = useRef<ChevronsUpDownIconHandle>(null)
 
@@ -184,6 +190,12 @@ export function ExperiencePositionItem({
       onOpenChange={handleOpenChange}
       disabled={!position.description}
     >
+      {showTimelineTail && (
+        <span
+          aria-hidden="true"
+          className="absolute top-6 left-3 z-1 h-4 w-px bg-border"
+        />
+      )}
       <CollapsibleTrigger
         className={cn(
           "group/experience-position not-prose block w-full text-left select-none",

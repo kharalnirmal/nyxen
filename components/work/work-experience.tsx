@@ -1,73 +1,73 @@
-"use client"
+"use client";
 
-import { useCallback, useRef, type ComponentProps } from "react"
-import { differenceInMonths, format, parse } from "date-fns"
-import { BriefcaseBusinessIcon, InfinityIcon } from "lucide-react"
-import Image from "next/image"
-import ReactMarkdown from "react-markdown"
+import { useCallback, useRef, type ComponentProps } from "react";
+import { differenceInMonths, format, parse } from "date-fns";
+import { BriefcaseBusinessIcon, InfinityIcon } from "lucide-react";
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import { Separator } from "@/components/ui/separator"
-import type { ChevronsUpDownIconHandle } from "@/components/ui/chevrons-up-down-icon"
-import { ChevronsUpDownIcon } from "@/components/ui/chevrons-up-down-icon"
+} from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
+import type { ChevronsUpDownIconHandle } from "@/components/ui/chevrons-up-down-icon";
+import { ChevronsUpDownIcon } from "@/components/ui/chevrons-up-down-icon";
 
 export type ExperiencePositionItemType = {
   /** Unique identifier for the position */
-  id: string
+  id: string;
   /** The job title or position name */
-  title: string
+  title: string;
   /**
    * Employment period of the position.
    * Use "MM.YYYY" or "YYYY" format. Omit `end` for current roles.
    */
   employmentPeriod: {
     /** Start date (e.g., "10.2022" or "2020"). */
-    start: string
+    start: string;
     /** End date; leave undefined for "Present". */
-    end?: string
-  }
+    end?: string;
+  };
   /** The type of employment (e.g., "Full-time", "Part-time", "Contract") */
-  employmentType?: string
+  employmentType?: string;
   /** A brief description of the position or responsibilities */
-  description?: string
+  description?: string;
   /** An icon representing the position */
-  icon?: React.ReactElement
+  icon?: React.ReactElement;
   /** A list of skills associated with the position */
-  skills?: string[]
+  skills?: string[];
   /** Indicates if the position details are expanded in the UI */
-  isExpanded?: boolean
-}
+  isExpanded?: boolean;
+};
 
 export type ExperienceItemType = {
   /** Unique identifier for the experience item */
-  id: string
+  id: string;
   /** Name of the company where the experience was gained */
-  companyName: string
+  companyName: string;
   /** URL or path to the company's logo image */
-  companyLogo?: string
+  companyLogo?: string;
   /** Optional logo used in dark mode */
-  companyLogoDark?: string
+  companyLogoDark?: string;
   /** URL to the company's website. */
-  companyWebsite?: string
+  companyWebsite?: string;
   /**
    * List of positions held at the company
    * @fumadocsHref #experiencepositionitemtype
    * */
-  positions: ExperiencePositionItemType[]
+  positions: ExperiencePositionItemType[];
   /** Indicates if this is the user's current employer */
-  isCurrentEmployer?: boolean
-}
+  isCurrentEmployer?: boolean;
+};
 
 export type WorkExperienceProps = {
-  className?: string
+  className?: string;
   /** @fumadocsHref #experienceitemtype */
-  experiences: ExperienceItemType[]
-}
+  experiences: ExperienceItemType[];
+};
 
 export function WorkExperience({
   className,
@@ -79,18 +79,18 @@ export function WorkExperience({
         <ExperienceItem key={experience.id} experience={experience} />
       ))}
     </div>
-  )
+  );
 }
 
 export type ExperienceItemProps = {
-  experience: ExperienceItemType
-}
+  experience: ExperienceItemType;
+};
 
 export function ExperienceItem({ experience }: ExperienceItemProps) {
   return (
     <div className="space-y-4 py-4">
-      <div className="not-prose flex items-center gap-3">
-        <div className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-line ring-offset-1 ring-offset-background">
+      <div className="flex items-center gap-3 not-prose">
+        <div className="flex justify-center items-center bg-muted border border-muted-foreground/15 rounded-lg ring-1 ring-line ring-offset-1 ring-offset-background size-6 text-muted-foreground shrink-0">
           {experience.companyLogo ? (
             <>
               <Image
@@ -100,7 +100,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
                 height={40}
                 className={cn(
                   "size-5 object-contain",
-                  experience.companyLogoDark && "dark:hidden"
+                  experience.companyLogoDark && "dark:hidden",
                 )}
               />
               {experience.companyLogoDark && (
@@ -109,16 +109,16 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
                   alt={experience.companyName}
                   width={40}
                   height={40}
-                  className="hidden size-5 object-contain dark:block"
+                  className="hidden dark:block size-5 object-contain"
                 />
               )}
             </>
           ) : (
-            <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+            <span className="flex bg-zinc-300 dark:bg-zinc-600 rounded-full size-2" />
           )}
         </div>
 
-        <h3 className="text-xl/snug font-semibold">
+        <h3 className="font-semibold text-xl/snug">
           {experience.companyWebsite ? (
             <a
               className="link"
@@ -135,16 +135,16 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
 
         {experience.isCurrentEmployer && (
           <span
-            className="relative flex items-center justify-center"
+            className="relative flex justify-center items-center"
             aria-label="Current Employer"
           >
-            <span className="absolute inline-flex size-3 animate-ping rounded-full bg-sky-500 opacity-50" />
-            <span className="relative inline-flex size-2 rounded-full bg-sky-500" />
+            <span className="inline-flex absolute bg-sky-500 opacity-50 rounded-full size-3 animate-ping" />
+            <span className="inline-flex relative bg-sky-500 rounded-full size-2" />
           </span>
         )}
       </div>
 
-      <div className="relative space-y-4 before:absolute before:top-3 before:bottom-3 before:left-3 before:w-px before:bg-border">
+      <div className="before:top-3 before:bottom-3 before:left-3 before:absolute relative space-y-4 before:bg-border before:w-px">
         {experience.positions.map((position, index) => (
           <ExperiencePositionItem
             key={position.id}
@@ -154,34 +154,34 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export type ExperiencePositionItemProps = {
-  position: ExperiencePositionItemType
-  isLastPosition?: boolean
-}
+  position: ExperiencePositionItemType;
+  isLastPosition?: boolean;
+};
 
 export function ExperiencePositionItem({
   position,
   isLastPosition = false,
 }: ExperiencePositionItemProps) {
-  const chevronsUpDownIconRef = useRef<ChevronsUpDownIconHandle>(null)
+  const chevronsUpDownIconRef = useRef<ChevronsUpDownIconHandle>(null);
 
   const handleOpenChange = useCallback((open: boolean) => {
-    const controls = chevronsUpDownIconRef.current
-    if (!controls) return
+    const controls = chevronsUpDownIconRef.current;
+    if (!controls) return;
 
     if (open) {
-      controls.startAnimation()
+      controls.startAnimation();
     } else {
-      controls.stopAnimation()
+      controls.stopAnimation();
     }
-  }, [])
+  }, []);
 
-  const { start, end } = position.employmentPeriod
-  const isOngoing = !end
-  const duration = formatDuration(start, end)
+  const { start, end } = position.employmentPeriod;
+  const isOngoing = !end;
+  const duration = formatDuration(start, end);
 
   return (
     <Collapsible
@@ -192,34 +192,34 @@ export function ExperiencePositionItem({
     >
       <CollapsibleTrigger
         className={cn(
-          "group/experience-position not-prose block w-full text-left select-none",
+          "group/experience-position block w-full text-left select-none not-prose",
           "relative before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7 before:rounded-lg hover:before:bg-muted/30",
-          "data-disabled:before:content-none"
+          "data-disabled:before:content-none",
         )}
       >
-        <div className="relative z-1 mb-1 flex items-start gap-3 text-base">
+        <div className="z-1 relative flex items-start gap-3 mb-1 text-base">
           <div
             className={cn(
-              "flex size-6 shrink-0 items-center justify-center rounded-lg",
+              "flex justify-center items-center rounded-lg size-6 shrink-0",
               "bg-muted text-muted-foreground",
               "border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background",
-              "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+              "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
             )}
           >
             {position.icon ?? <BriefcaseBusinessIcon />}
           </div>
 
-          <h4 className="flex-1 font-medium text-balance text-foreground">
+          <h4 className="flex-1 font-medium text-foreground text-balance">
             {position.title}
           </h4>
 
-          <div className="shrink-0 text-muted-foreground group-data-disabled/experience-position:hidden [&_svg]:h-lh [&_svg]:w-4">
+          <div className="group-data-disabled/experience-position:hidden [&_svg]:w-4 [&_svg]:h-lh text-muted-foreground shrink-0">
             <ChevronsUpDownIcon ref={chevronsUpDownIconRef} duration={0.15} />
           </div>
         </div>
 
         {/* Separators are aria-hidden: a dl may only expose dt/dd groups, and these dividers are decorative. */}
-        <dl className="relative z-1 flex items-center gap-2 pl-9 text-sm text-muted-foreground">
+        <dl className="z-1 relative flex items-center gap-2 pl-9 text-muted-foreground text-sm">
           {position.employmentType && (
             <>
               <div>
@@ -228,7 +228,7 @@ export function ExperiencePositionItem({
               </div>
 
               <Separator
-                className="data-vertical:h-4 data-vertical:self-center"
+                className="data-vertical:self-center data-vertical:h-4"
                 orientation="vertical"
                 aria-hidden
               />
@@ -254,7 +254,7 @@ export function ExperiencePositionItem({
           {duration && (
             <>
               <Separator
-                className="data-vertical:h-4 data-vertical:self-center"
+                className="data-vertical:self-center data-vertical:h-4"
                 orientation="vertical"
                 aria-hidden
               />
@@ -278,9 +278,9 @@ export function ExperiencePositionItem({
       {Array.isArray(position.skills) && position.skills.length > 0 && (
         <ul
           className={cn(
-            "not-prose relative flex flex-wrap gap-1.5 pt-3 pl-9",
+            "relative flex flex-wrap gap-1.5 pt-3 pl-9 not-prose",
             isLastPosition &&
-              "before:absolute before:top-[1.4rem] before:bottom-0 before:left-3 before:w-px before:bg-[color-mix(in_oklab,var(--portfolio-accent)_2.5%,var(--background))] after:absolute after:top-[1.4rem] after:left-3 after:h-px after:w-4 after:bg-border"
+              "before:absolute before:top-[1.4rem] before:bottom-0 before:left-3 before:w-px before:bg-[color-mix(in_oklab,var(--portfolio-accent)_2.5%,var(--background))] after:absolute after:top-[1.4rem] after:left-3 after:h-px after:w-4 after:bg-border",
           )}
         >
           {position.skills.map((skill, index) => (
@@ -291,82 +291,82 @@ export function ExperiencePositionItem({
         </ul>
       )}
     </Collapsible>
-  )
+  );
 }
 
 function Prose({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "prose max-w-none prose-ncdai prose-zinc dark:prose-invert",
-        className
+        "dark:prose-invert max-w-none prose prose-ncdai prose-zinc",
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function Skill({ className, ...props }: ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md border bg-muted/50 px-1.5 py-0.5 font-mono text-xs text-muted-foreground",
-        className
+        "inline-flex items-center bg-muted/50 px-1.5 py-0.5 border rounded-md font-mono text-muted-foreground text-xs",
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function formatDuration(start: string, end?: string): string {
-  const startHasMonth = start.includes(".")
-  const endHasMonth = end ? end.includes(".") : true
+  const startHasMonth = start.includes(".");
+  const endHasMonth = end ? end.includes(".") : true;
 
   // Both year-only: granularity is years, no month arithmetic needed.
   if (!startHasMonth && end && !endHasMonth) {
-    const years = parseInt(end, 10) - parseInt(start, 10)
+    const years = parseInt(end, 10) - parseInt(start, 10);
     if (years <= 0) {
-      return ""
+      return "";
     }
-    return `${years}y`
+    return `${years}y`;
   }
 
-  const startDate = parsePeriodDate(start, "first")
-  const endDate = end ? parsePeriodDate(end, "last") : new Date()
+  const startDate = parsePeriodDate(start, "first");
+  const endDate = end ? parsePeriodDate(end, "last") : new Date();
 
   // +1 to count both the start and end months inclusively.
-  const totalMonths = differenceInMonths(endDate, startDate) + 1
+  const totalMonths = differenceInMonths(endDate, startDate) + 1;
   if (totalMonths <= 0) {
-    return ""
+    return "";
   }
 
   if (totalMonths < 12) {
-    return `${totalMonths}m`
+    return `${totalMonths}m`;
   }
 
-  const years = Math.floor(totalMonths / 12)
-  const months = totalMonths % 12
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
   if (months === 0) {
-    return `${years}y`
+    return `${years}y`;
   }
-  return `${years}y ${months}m`
+  return `${years}y ${months}m`;
 }
 
 function formatPeriodLabel(period: string): string {
   if (!period.includes(".")) {
-    return period
+    return period;
   }
 
-  return format(parse(period, "MM.yyyy", new Date()), "MMM yyyy")
+  return format(parse(period, "MM.yyyy", new Date()), "MMM yyyy");
 }
 
 function parsePeriodDate(str: string, fallbackMonth: "first" | "last"): Date {
   if (str.includes(".")) {
-    return parse(str, "MM.yyyy", new Date())
+    return parse(str, "MM.yyyy", new Date());
   }
   return parse(
     `${fallbackMonth === "last" ? "12" : "01"}.${str}`,
     "MM.yyyy",
-    new Date()
-  )
+    new Date(),
+  );
 }

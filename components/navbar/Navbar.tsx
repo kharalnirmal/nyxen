@@ -129,19 +129,22 @@ export default function Navbar() {
   );
 
   return (
-    <header className="sticky top-0 z-50 flex w-full justify-center px-4 py-4 sm:px-8 sm:py-6">
-      <div ref={containerRef} className="relative h-14 w-full max-w-4xl sm:h-16">
+    <header className="top-0 z-50 sticky flex justify-center px-4 sm:px-8 py-4 sm:py-6 w-full">
+      <div
+        ref={containerRef}
+        className="relative w-full max-w-4xl h-14 sm:h-16"
+      >
         <nav
           ref={navRef}
           aria-label="Primary navigation"
-          className="absolute top-0 left-1/2 flex h-14 w-full -translate-x-1/2 items-center justify-between overflow-hidden rounded-[1.1rem] border border-foreground/10 bg-background px-5 shadow-[0_12px_40px_-24px_rgb(0_0_0/0.4)] sm:h-16 sm:px-8 dark:shadow-[0_12px_40px_-24px_rgb(0_0_0/0.8)]"
+          className="top-0 left-1/2 absolute flex justify-between items-center bg-background shadow-[0_12px_40px_-24px_rgb(0_0_0/0.4)] dark:shadow-[0_12px_40px_-24px_rgb(0_0_0/0.8)] px-5 sm:px-8 border border-foreground/10 rounded-[1.1rem] w-full h-14 sm:h-16 overflow-hidden -translate-x-1/2"
         >
           <a
             ref={nameRef}
             href="#selected-work"
             aria-label="Nirmal Kharal, back to introduction"
             tabIndex={isCollapsed ? -1 : undefined}
-            className="justify-self-start font-[family-name:var(--font-depMono)] text-2xl font-black tracking-[-0.14em] text-foreground transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:text-3xl"
+            className="justify-self-start hover:opacity-60 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-4 font-[family-name:var(--font-depMono)] font-black text-foreground text-2xl sm:text-3xl tracking-[-0.14em] transition-opacity"
           >
             NK
           </a>
@@ -150,7 +153,9 @@ export default function Navbar() {
             type="button"
             onClick={() => setIsCollapsed((collapsed) => !collapsed)}
             aria-expanded={!isCollapsed}
-            aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}
+            aria-label={
+              isCollapsed ? "Expand navigation" : "Collapse navigation"
+            }
             title={isCollapsed ? "Expand navigation" : "Collapse navigation"}
             className={`absolute left-1/2 grid -translate-x-1/2 place-items-center rounded-full text-foreground/80 transition-[width,height,color,background-color] duration-200 hover:bg-foreground/8 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${isCollapsed ? "size-10" : "size-12"}`}
           >
@@ -162,22 +167,22 @@ export default function Navbar() {
           <div
             ref={controlsRef}
             inert={isCollapsed}
-            className="ml-auto flex items-center gap-2 sm:gap-3"
+            className="flex items-center gap-2 sm:gap-3 ml-auto"
           >
             <AnimatedThemeToggler
               variant="circle"
               aria-label="Toggle color theme"
               title="Toggle color theme"
-              className="grid size-10 place-items-center rounded-full text-foreground/70 transition-colors hover:bg-foreground/8 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&_svg]:size-[1.1rem]"
+              className="place-items-center grid hover:bg-foreground/8 rounded-full focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 size-10 [&_svg]:size-[1.1rem] text-foreground/70 hover:text-foreground transition-colors"
             />
-            <span className="h-6 w-px bg-border" aria-hidden="true" />
+            <span className="bg-border w-px h-6" aria-hidden="true" />
             <a
               href="https://github.com/kharalnirmal"
               target="_blank"
               rel="noreferrer"
               aria-label="Visit Nirmal Kharal on GitHub"
               title="GitHub"
-              className="grid size-10 place-items-center rounded-full text-foreground/70 transition-colors hover:bg-foreground/8 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="place-items-center grid hover:bg-foreground/8 rounded-full focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 size-10 text-foreground/70 hover:text-foreground transition-colors"
             >
               <FaGithub className="size-5" aria-hidden="true" />
             </a>

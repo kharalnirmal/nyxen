@@ -1,4 +1,5 @@
 import About from "@/components/about/About";
+import Experience from "@/components/experience/Experience";
 import { CinematicFooter } from "@/components/footer/motion-footer";
 import Hero from "@/components/hero/Hero";
 import Navbar from "@/components/navbar/Navbar";
@@ -16,6 +17,7 @@ export default function Home() {
         <About />
       </div>
       <Work />
+      <Experience />
 
       <CinematicFooter />
     </main>

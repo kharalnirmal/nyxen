@@ -1,11 +1,18 @@
 .workSection h2 {
   margin-top: clamp(70px, 8vh, 120px);
   padding-inline: clamp(24px, 5vw, 80px);
-  font-size: clamp(64px, 6vw, 116px);
-  font-weight: 500;
+  font-size: 2.25rem;
+  font-weight: 600;
   line-height: 1;
   font-family: var(--font-clash);
 }
+
+@media (min-width: 640px) {
+  .workSection h2 {
+    font-size: 3.75rem;
+  }
+}
+
 .workSection h2 > span {
   color: var(--portfolio-accent);
 }
@@ -303,7 +310,6 @@
     padding-bottom: 40px;
   }
   .workSection h2 {
-    font-size: clamp(54px, 5vw, 80px);
     margin-bottom: 30px;
     margin-top: 70px;
   }
@@ -323,7 +329,6 @@
     padding: 50px;
   }
   .workSection h2 {
-    font-size: clamp(56px, 6vw, 84px);
     padding-inline: clamp(30px, 4vw, 50px);
   }
 }
@@ -333,7 +338,6 @@
   }
   .workSection h2 {
     padding-inline: 20px;
-    font-size: clamp(42px, 10vw, 56px);
     margin-top: clamp(32px, 6svh, 48px);
     margin-bottom: 18px;
   }
@@ -348,15 +352,8 @@
   }
 }
 
-@media only screen and (max-height: 900px) and (min-width: 901px) {
-  .workSection h2 {
-    font-size: clamp(54px, 5vw, 80px);
-  }
-}
-
 @media only screen and (max-height: 650px) and (min-width: 901px) {
   .workSection h2 {
-    font-size: clamp(38px, 8vh, 48px);
     margin-bottom: 20px;
     margin-top: 50px;
   }

@@ -103,7 +103,7 @@ const Work = () => {
               isView
               animationDuration={800}
               action="underline"
-              color="var(--portfolio-accent)"
+              color="var(--portfolio-accent-foreground)"
               strokeWidth={1}
               iterations={2}
               offsetY={-8}

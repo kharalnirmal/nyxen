@@ -88,6 +88,9 @@
   --portfolio-accent: #8200db;
   --portfolio-accent-foreground: #fff;
   --work-border: #dedede;
+  --scrollbar-thumb: rgb(23 23 23 / 30%);
+  --scrollbar-thumb-hover: rgb(23 23 23 / 50%);
+  --scrollbar-track: transparent;
 }
 
 .dark {
@@ -124,6 +127,9 @@
   --sidebar-ring: oklch(0.556 0 0);
   --portfolio-accent: #c084fc;
   --work-border: #363636;
+  --scrollbar-thumb: rgb(255 255 255 / 28%);
+  --scrollbar-thumb-hover: rgb(255 255 255 / 48%);
+  --scrollbar-track: transparent;
 }
 
 @layer base {
@@ -139,7 +145,31 @@
     @apply font-sans;
     max-width: 100%;
     overflow-x: clip;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 2rem;
+  background: var(--scrollbar-thumb);
+  background-clip: content-box;
+  border: 0.125rem solid transparent;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: content-box;
 }
 
 ::view-transition-old(root),

@@ -107,6 +107,7 @@ export default function Preloader() {
       className={styles.overlay}
       aria-label="Loading portfolio"
       aria-live="polite"
+      data-lenis-prevent
     >
       <div ref={contentRef} className={styles.content}>
         <div ref={lottieRef} className={styles.lottie} aria-hidden="true">

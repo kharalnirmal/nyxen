@@ -4,6 +4,7 @@ import * as React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLenis } from "lenis/react";
 import { FaDiscord, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { caveat } from "@/app/font";
 import { clashDisplay } from "@/app/font";
@@ -247,6 +248,7 @@ const SOCIAL_LINKS = [
 ];
 
 export function CinematicFooter() {
+  const lenis = useLenis();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const giantTextRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -304,7 +306,7 @@ export function CinematicFooter() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    lenis?.scrollTo(0);
   };
 
   return (

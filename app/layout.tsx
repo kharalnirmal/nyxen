@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import "lenis/dist/lenis.css";
 import "./globals.css";
+import SmoothScroll from "@/components/smooth-scroll/SmoothScroll";
 import { caveat, clashDisplay, DepartureMono } from "./font";
 
 const geistSans = Geist({
@@ -63,7 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} ${clashDisplay.variable} ${DepartureMono.variable} h-full antialiased`}
     >
       <body className="flex flex-col min-h-full">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
         <Script
           id="theme-initializer"
           strategy="beforeInteractive"

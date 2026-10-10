@@ -24,6 +24,14 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Repolens",
+    category: "Web Application",
+    tools: "Next.js, Clerk, Supabase, ReactFlow, TS-morph, Gemini-API",
+    image: "/projects/repolensv2.png",
+    alt: "Repolens",
+    link: "https://repolens-pink.vercel.app/",
+  },
+  {
     name: "GTA VI",
     category: "Landing Page",
     tools: "Next.js, TypeScript, GSAP",
@@ -31,6 +39,7 @@ const projects: Project[] = [
     alt: "GTA VI landing page",
     link: "https://gta-vi-landing-page-cyan.vercel.app/",
   },
+
   {
     name: "Smart Fridge",
     category: "Web Application",

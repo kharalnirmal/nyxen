@@ -32,21 +32,21 @@ const projects: Project[] = [
     link: "https://repolens-pink.vercel.app/",
   },
   {
-    name: "GTA VI",
+    name: "Portfolio",
     category: "Landing Page",
-    tools: "Next.js, TypeScript, GSAP",
-    image: "/projects/gta.webp",
-    alt: "GTA VI landing page",
-    link: "https://gta-vi-landing-page-cyan.vercel.app/",
+    tools: "React, Javascript, GSAP, Tailwind",
+    image: "/projects/portfolio.png",
+    alt: "portfolio",
+    link: "https://nxn-dev.vercel.app/",
   },
 
   {
-    name: "Smart Fridge",
-    category: "Web Application",
-    tools: "React, TypeScript, 3js, MealDb",
-    image: "/projects/fridge.png",
-    alt: "Smart Fridge recipe application",
-    link: "https://fridgehub.vercel.app/",
+    name: "GTA VI",
+    category: "Landing Page",
+    tools: "Next.js, TypeScript, GSAP",
+    image: "/projects/gta.png",
+    alt: "GTA VI landing page",
+    link: "https://gta-vi-landing-page-cyan.vercel.app/",
   },
   {
     name: "Kairo",
@@ -55,14 +55,6 @@ const projects: Project[] = [
     image: "/projects/kairo.png",
     alt: "Kairo productivity application",
     link: "https://pomo-kairo.vercel.app/",
-  },
-  {
-    name: "Zentry",
-    category: "Gaming Website",
-    tools: "React , Gsap , Tailwind",
-    image: "/projects/zentry.webp",
-    alt: "Zentry gaming website",
-    link: "https://zentry-the-metagame-3a86.vercel.app/",
   },
 ];
 
